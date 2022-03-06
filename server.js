@@ -8,6 +8,10 @@ connectDB();
 
 app.get("/", (req, res) => res.send("API Starting"));
 
+//Init Middleware
+// @ts-ignore
+app.use(express.json({extended:false}));
+
 //Define Routes
 app.use(
   "/api/customer_registration",
