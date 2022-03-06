@@ -18,7 +18,7 @@ router.post(
   [
     check("c_name", "Name is required").not().isEmpty(),
     check("email", "Please include a valid email").isEmail(),
-
+    check("contact", "Enter Valid Number").matches(RegExp("^[6-9]\\d{9}$")),
     check("dob", "Enter Date Of Birth").not().isEmpty(),
     check("address", "Current Address is Required").not().isEmpty(),
     check("city", "select City").not().isEmpty(),
