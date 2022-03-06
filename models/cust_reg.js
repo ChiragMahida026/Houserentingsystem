@@ -11,8 +11,6 @@ const CustomerSchema = new mongoose.Schema({
     unique: true,
   },
   contact: {
-    // @ts-ignore
-    trim: true,
     unique: true,
     type: String,
     required: true,
@@ -31,12 +29,12 @@ const CustomerSchema = new mongoose.Schema({
   address: {
     trim: true,
     type: String,
-    require:true,
+    require: true,
   },
   city: {
     trim: true,
     type: String,
-    require: true, 
+    require: true,
   },
   state: {
     trim: true,

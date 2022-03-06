@@ -18,6 +18,13 @@ router.post(
   [
     check("c_name", "Name is required").not().isEmpty(),
     check("email", "Please include a valid email").isEmail(),
+
+    check("dob", "Enter Date Of Birth").not().isEmpty(),
+    check("address", "Current Address is Required").not().isEmpty(),
+    check("city", "select City").not().isEmpty(),
+    check("state", "selct state").not().isEmpty(),
+    check("Identification_proof_type").not().isEmpty(),
+    check("Identification_proof").not().isEmpty(),
     check(
       "password",
       "Please enter a password with 6 or more character"
@@ -32,16 +39,34 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { c_name, email, password } = req.body;
+    const {
+      c_name,
+      email,
+      contact,
+      dob,
+      address,
+      city,
+      state,
+      Identification_proof_type,
+      Identification_proof,
+      password,
+    } = req.body;
 
     try {
       //See if User exits
       let cust = await cust_reg.findOne({ email });
+      let con = await cust_reg.findOne({ contact });
 
       if (cust) {
         return res
           .status(400)
           .json({ errors: [{ msg: "User alraedy exists" }] });
+      }
+      if (con) {
+        console.error(con);
+        return res
+          .status(400)
+          .json({ errors: [{ msg: "contact alraedy exists" }] });
       }
 
       //get Users gravatar
@@ -53,6 +78,13 @@ router.post(
       cust = new cust_reg({
         c_name,
         email,
+        contact,
+        dob,
+        address,
+        city,
+        state,
+        Identification_proof_type,
+        Identification_proof,
         avatar,
         password,
       });
@@ -78,7 +110,7 @@ router.post(
         }
       );
 
-      // res.send("User route");//to print value
+      // res.send("Customer Registration route");//to print value
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server error");
