@@ -10,6 +10,50 @@ const CustomerSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  contact: {
+    // @ts-ignore
+    trim: true,
+    unique: true,
+    type: String,
+    required: true,
+    validate(value) {
+      if (value.length !== 10) {
+        throw new Error("Mobile Number is invalid!");
+      }
+    },
+  },
+  dob: {
+    trim: true,
+    type: Date,
+    required: true,
+  },
+
+  address: {
+    trim: true,
+    type: String,
+    require:true,
+  },
+  city: {
+    trim: true,
+    type: String,
+    require: true, 
+  },
+  state: {
+    trim: true,
+    uppercase: true,
+    type: String,
+    require: true,
+  },
+
+  Identification_proof_type: {
+    trim: true,
+    type: String,
+    required: true,
+  },
+  Identification_proof: {
+    type: String,
+    required: true,
+  },
 
   password: {
     type: String,
