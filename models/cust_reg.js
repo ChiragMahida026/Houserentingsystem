@@ -10,6 +10,7 @@ const CustomerSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+
   password: {
     type: String,
     required: true,
@@ -23,13 +24,15 @@ const CustomerSchema = new mongoose.Schema({
   },
   usertype: {
     type: String,
-    default:"C"
+    default: "C",
   },
   status: {
     type: String,
+    enum: ["A", "P"],
+    default: "P",
   },
 });
 
-//save in variable 
+//save in variable
 var Cust = mongoose.model("customer_reg", CustomerSchema);
 module.exports = Cust;
