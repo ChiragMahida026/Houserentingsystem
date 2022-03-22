@@ -8,3 +8,28 @@
 .icon-width {
   width: 2rem;
 }
+
+.navbar {
+  background: azure;
+}
+
+.btns {
+  -webkit-border-radius: 36;
+  -moz-border-radius: 36;
+  border-radius: 12px;
+  -webkit-box-shadow: 0px 1px 3px #666666;
+  -moz-box-shadow: 0px 1px 3px #666666;
+  box-shadow: 0px 1px 3px #666666;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 10px;
+  background: #000000;
+  border: solid #1f628d 0px;
+  text-decoration: none;
+}
+
+.btns:hover {
+  background: #07e38b;
+  text-decoration: none;
+}

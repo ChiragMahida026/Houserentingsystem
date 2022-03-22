@@ -1,6 +1,21 @@
 import React from "react";
 import "../layout/css/Navbarcss.css";
+// @ts-ignore
+import logo from "../layout/images/logo-home-png-7435.png";
 import $ from "jquery";
+import {
+  FaCaretSquareDown,
+  FaEnvelope,
+  FaFacebook,
+  FaHome,
+  FaHospitalUser,
+  FaHouseUser,
+  FaInstagram,
+  FaLinkedin,
+  FaServicestack,
+  FaTwitter,
+  FaUser,
+} from "react-icons/fa";
 
 $(document).ready(function () {
   if ($(window).width() > 991) {
@@ -23,10 +38,11 @@ $(document).ready(function () {
 const Navbar = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light shadow-sm bg-light fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-light shadow-sm  fixed-top">
         <div className="container">
           <a className="navbar-brand d-flex align-items-center" href="#">
-            <span className="ml-3 font-weight-bold">BRAND</span>
+            <img src={logo} alt="Logo" style={{ width: "55px" }} />
+            <span className="ml-3 font-weight-bold">Rent-House</span>
           </a>
           <button
             className="navbar-toggler navbar-toggler-right border-0"
@@ -43,26 +59,20 @@ const Navbar = () => {
             <ul className="navbar-nav mr-auto pl-lg-4">
               <li className="nav-item px-lg-2 active">
                 <a className="nav-link" href="#">
-                  <span className="d-inline-block d-lg-none icon-width">
-                    <i className="fa fa-home"></i>
-                  </span>
-                  Home
+                  <FaHome />
+                  &nbsp; Home
                 </a>
               </li>
               <li className="nav-item px-lg-2">
                 <a className="nav-link" href="#">
-                  <span className="d-inline-block d-lg-none icon-width">
-                    <i className="fa fa-spa"></i>
-                  </span>
-                  Services
+                  <FaServicestack />
+                  &nbsp; Services
                 </a>
               </li>
               <li className="nav-item px-lg-2">
                 <a className="nav-link" href="#">
-                  <span className="d-inline-block d-lg-none icon-width">
-                    <i className="fa fa-user"></i>
-                  </span>
-                  About
+                  <FaUser />
+                  &nbsp; About
                 </a>
               </li>
               <li className="nav-item px-lg-2 dropdown d-menu">
@@ -74,10 +84,8 @@ const Navbar = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <span className="d-inline-block d-lg-none icon-width">
-                    <i className="fa fa-caret-square-down"></i>
-                  </span>
-                  Dropdown
+                  <FaCaretSquareDown />
+                  &nbsp; Dropdown
                   <svg
                     id="arrow"
                     xmlns="http://www.w3.org/2000/svg"
@@ -110,36 +118,36 @@ const Navbar = () => {
               </li>
               <li className="nav-item px-lg-2">
                 <a className="nav-link" href="#">
-                  <span className="d-inline-block d-lg-none icon-width">
-                    <i className="far fa-envelope"></i>
-                  </span>
-                  Contact
+                  {/* <span className="d-inline-block d-lg-none icon-width"></span> */}
+                  <FaEnvelope />
+                  &nbsp; Login
                 </a>
               </li>
             </ul>
-            <ul className="navbar-nav ml-auto mt-3 mt-lg-0">
+
+            <ul
+              className="navbar-nav ml-auto mt-3 mt-lg-0"
+              style={{ margin: "auto", marginRight: "inherit" }}
+            >
               <li className="nav-item">
                 <a className="nav-link" href="#">
-                  <i className="fa fa-twitter"></i>
-                  <span className="d-lg-none ml-3">Twitter</span>
+                  <button type="button" className="btns">
+                    {/* // 1x - 14px 
+                    // 2x - 28px 
+                    // 3x - 42px 
+                    // 4x - 56px 
+                    // 5x - 70px */}
+                    <FaHospitalUser size={20} />
+                    &nbsp; Customer Registration
+                  </button>
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
-                  <i className="fa fa-facebook"></i>
-                  <span className="d-lg-none ml-3">Facebook</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  <i className="fa fa-instagram"></i>
-                  <span className="d-lg-none ml-3">Instagram</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  <i className="fa fa-linkedin"></i>
-                  <span className="d-lg-none ml-3">Linkedin</span>
+                  <button type="button" className="btns">
+                    <FaHouseUser size={20} />
+                    &nbsp; Landlord Registration
+                  </button>
                 </a>
               </li>
             </ul>
