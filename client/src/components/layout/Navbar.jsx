@@ -16,6 +16,7 @@ import {
   FaTwitter,
   FaUser,
 } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 $(document).ready(function () {
   if ($(window).width() > 991) {
@@ -40,10 +41,10 @@ const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-light shadow-sm  fixed-top">
         <div className="container">
-          <a className="navbar-brand d-flex align-items-center" href="#">
+          <Link className="navbar-brand d-flex align-items-center" to="/">
             <img src={logo} alt="Logo" style={{ width: "55px" }} />
             <span className="ml-3 font-weight-bold">Rent-House</span>
-          </a>
+          </Link>
           <button
             className="navbar-toggler navbar-toggler-right border-0"
             type="button"
@@ -117,20 +118,20 @@ const Navbar = () => {
                 </div>
               </li>
               <li className="nav-item px-lg-2">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to="/login">
                   {/* <span className="d-inline-block d-lg-none icon-width"></span> */}
                   <FaEnvelope />
                   &nbsp; Login
-                </a>
+                </Link>
               </li>
             </ul>
 
             <ul
               className="navbar-nav ml-auto mt-3 mt-lg-0"
-              style={{ margin: "auto", marginRight: "inherit" }}
+              style={{ margin: "auto", marginRight: "inherit"  }}
             >
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to="/customerregistration">
                   <button type="button" className="btns">
                     {/* // 1x - 14px 
                     // 2x - 28px 
@@ -140,15 +141,15 @@ const Navbar = () => {
                     <FaHospitalUser size={20} />
                     &nbsp; Customer Registration
                   </button>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" to="/landloadregistration">
                   <button type="button" className="btns">
                     <FaHouseUser size={20} />
                     &nbsp; Landlord Registration
                   </button>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
