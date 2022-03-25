@@ -2,10 +2,9 @@ import React from "react";
 // @ts-ignore
 import img1 from "../layout/images/img-05.jpg";
 // @ts-ignore
-import img2 from "../layout/images/2f12cb22-293c-4a95-81b4-699a909f18c5-Buildingourownhouse.webp";
-import "../layout/css/Regcss.css";
+import img2 from "../layout/images/8b5d6f32-0406-42c3-b4eb-7d79054bf948-HomeSweetHome.webp";
 
-const CustomerRegistration = () => {
+const LandlordRegistration = () => {
   return (
     <>
       <div className="child">
@@ -20,7 +19,7 @@ const CustomerRegistration = () => {
           <div className="container">
             <div className="row">
               <div className="col-xs-12">
-                <h1>Customer Registration</h1>
+                <h1>Landlord Registration</h1>
               </div>
             </div>
           </div>
@@ -68,7 +67,7 @@ const CustomerRegistration = () => {
               style={{ height: "auto", resize: "none" }}
             ></textarea>
           </div>
-          <div className="form-group ">
+          <div className="form-group">
             <label className="label-title">Date Of Birth </label>
             <input
               type="Date"
@@ -174,4 +173,4 @@ const CustomerRegistration = () => {
   );
 };
 
-export default CustomerRegistration;
+export default LandlordRegistration;

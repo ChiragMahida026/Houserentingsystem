@@ -1,30 +1,41 @@
 import React, { Fragment } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
-import Home from "./components/layout/Home";
 import About from "./components/layout/About";
-import Contact from "./components/layout/Contact";
-import Service from "./components/layout/Service";
 import Navbar from "./components/layout/Navbar";
 import { Redirect, Route, Router, Switch } from "react-router-dom";
 import Landing from "./components/layout/Landing";
 import CustomerRegistration from "./components/layout/CustomerRegistration";
 import Login from "./components/layout/Login";
+import Footer from "./components/layout/Footer";
+import Error_page from "./components/layout/Error_page";
+import LandlordRegistration from "./components/layout/LandlordRegistration";
 
 const App = () => {
   return (
     <>
-    <Navbar/>
-    <Fragment>
-        <Route exact path="/" component={ Landing } />
-        <section className="container" >
-        
+      <Navbar />
+      <Fragment>
+        <Route exact path="/" component={Landing} />
+
+        <section className="container">
           <Switch>
-            <Route exact path="/customerregistration" component={ CustomerRegistration }/>
-            <Route exact path="/login" component={Login}/>
+            <Route
+              exact
+              path="/customer_reg"
+              component={CustomerRegistration}
+            />
+            <Route exact path="/login" component={Login} />
+            <Route
+              exact
+              path="/landlord_reg"
+              component={LandlordRegistration}
+            />
+            <Route exact path="/error" component={Error_page} />
           </Switch>
         </section>
       </Fragment>
+      <Footer />
     </>
   );
 };

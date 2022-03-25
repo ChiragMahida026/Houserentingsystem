@@ -21,19 +21,19 @@ const landlordSchema = new mongoose.Schema({
     },
   },
   password: {
-    type: String, 
+    type: String,
     required: true,
   },
-  usertype:{
+  usertype: {
     type: String,
     default: "l",
   },
-  identificationtype:{
+  identificationtype: {
     trim: true,
     type: String,
     required: true,
   },
-  identification:{
+  identification: {
     type: String,
     required: true,
   },
@@ -42,13 +42,29 @@ const landlordSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  city: {
+    trim: true,
+    type: String,
+    require: true,
+  },
+  state: {
+    trim: true,
+    uppercase: true,
+    type: String,
+    require: true,
+  },
   dob: {
     trim: true,
     type: Date,
     required: true,
   },
+  status: {
+    type: String,
+    enum: ["A", "P"],
+    default: "P",
+  },
 });
 
-  //save in variable
+//save in variable
 var landlord = mongoose.model("landlord_reg", landlordSchema);
 module.exports = landlord;
