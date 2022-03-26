@@ -3,7 +3,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import About from "./components/layout/About";
 import Navbar from "./components/layout/Navbar";
-import { Redirect, Route, Router, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Landing from "./components/layout/Landing";
 import CustomerRegistration from "./components/layout/CustomerRegistration";
 import Login from "./components/layout/Login";
