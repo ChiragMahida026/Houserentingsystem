@@ -1,6 +1,6 @@
 import React from "react";
 // @ts-ignore
-import img1 from "../layout/images/img-05.jpg";
+import img1 from "../layout/images/Zoom_BG5_Cozy-Living-Room.jpg";
 // @ts-ignore
 import img2 from "../layout/images/8b5d6f32-0406-42c3-b4eb-7d79054bf948-HomeSweetHome.webp";
 
@@ -19,7 +19,7 @@ const LandlordRegistration = () => {
           <div className="container">
             <div className="row">
               <div className="col-xs-12">
-                <h1>Landlord Registration</h1>
+                <h1 style={{ color: "darkblue" }}>Landlord Registration</h1>
               </div>
             </div>
           </div>

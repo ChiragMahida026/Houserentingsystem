@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // @ts-ignore
-import img1 from "../layout/images/img-05.jpg";
+import img1 from "../layout/images/Zoom_BG9_Stylish-Living-Room.jpg";
 
 const Landing = () => {
   return (
@@ -10,6 +10,7 @@ const Landing = () => {
         className="background-image-container white-text-container"
         style={{
           backgroundImage: "url(" + img1 + ")",
+          backgroundPosition: "bottom",
         }}
       >
         <div className="overlay"></div>

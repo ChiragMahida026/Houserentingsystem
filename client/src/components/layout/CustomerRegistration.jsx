@@ -1,11 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 // @ts-ignore
-import img1 from "../layout/images/img-05.jpg";
+import img1 from "../layout/images/real-estate-website-design-bg.jpg";
 // @ts-ignore
 import img2 from "../layout/images/2f12cb22-293c-4a95-81b4-699a909f18c5-Buildingourownhouse.webp";
 import "../layout/css/Regcss.css";
 
 const CustomerRegistration = () => {
+  const [fromData, setFormData] = useState({
+    name: "",
+    address: "",
+    dob: "",
+    DDState: "",
+    DDCity: "",
+    contact: "",
+    Identification_Proof: "",
+    Identification_Proof_Type: "",
+    email: "",
+    password: "",
+  });
+
+  const {
+    name,
+    address,
+    dob,
+    DDState,
+    DDCity,
+    contact,
+    Identification_Proof,
+    Identification_Proof_Type,
+    email,
+    password,
+  } = fromData;
+
+  const onChange = (e) =>
+    setFormData({ ...fromData, [e.target.name]: e.target.value });
+
   return (
     <>
       <div className="child">
@@ -50,7 +79,9 @@ const CustomerRegistration = () => {
               id="name"
               className="form-input"
               placeholder="enter your Full Name"
-              name="fullName"
+              name="name"
+              value={name}
+              onChange={(e) => onChange(e)}
               pattern="^[a-zA-Z]+ +[a-zA-Z]+$"
               required
             />
@@ -62,7 +93,7 @@ const CustomerRegistration = () => {
               placeholder="enter your Address"
               rows={4}
               cols={50}
-              name="Address"
+              name="address"
               minLength={5}
               maxLength={250}
               style={{ height: "auto", resize: "none" }}
@@ -108,7 +139,7 @@ const CustomerRegistration = () => {
                 placeholder="enter your contact no"
                 className="form-input"
                 style={{ height: "4% " }}
-                name="cnum"
+                name="Identification_Proof_Type"
                 pattern="^[6789][0-9]{9}$"
                 required
               />
@@ -117,7 +148,7 @@ const CustomerRegistration = () => {
               <label className="label-title">Upload Identification proof</label>
               <input
                 type="file"
-                name="File"
+                name="Identification_Proof"
                 id="choose-file"
                 accept="application/pdf"
                 size={80}
@@ -132,7 +163,7 @@ const CustomerRegistration = () => {
               maxLength={10}
               placeholder="enter your contact no"
               className="form-input"
-              name="cnum"
+              name="contact"
               pattern="^[6789][0-9]{9}$"
               required
             />
@@ -154,7 +185,7 @@ const CustomerRegistration = () => {
             <input
               type="password"
               id="clpass"
-              name="pass"
+              name="password"
               className="form-input"
               pattern="^.{6,}$"
               placeholder="enter your password"

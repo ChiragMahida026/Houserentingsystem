@@ -68,7 +68,7 @@ const Footer = () => {
             <ul className="list-unstyled">
               <li className="my-2">
                 <FaHome />
-                &nbsp; Bardoli,394210,India
+                &nbsp; Bardoli,394601,India
               </li>
               <li className="my-2">
                 <FaEnvelope />
