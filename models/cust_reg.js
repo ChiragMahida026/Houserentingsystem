@@ -76,5 +76,5 @@ const CustomerSchema = new mongoose.Schema({
 });
 
 //save in variable
-var Cust = mongoose.model("reg", CustomerSchema);
+var Cust = mongoose.model("userregister", CustomerSchema);
 module.exports = Cust;

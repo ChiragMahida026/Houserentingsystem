@@ -66,5 +66,5 @@ const landlordSchema = new mongoose.Schema({
 });
 
 //save in variable
-var landlord = mongoose.model("reg", landlordSchema);
+var landlord = mongoose.model("userregister", landlordSchema);
 module.exports = landlord;
