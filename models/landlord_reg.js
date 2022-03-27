@@ -28,12 +28,12 @@ const landlordSchema = new mongoose.Schema({
     type: String,
     default: "l",
   },
-  identificationtype: {
+  Identificationtype: {
     trim: true,
     type: String,
     required: true,
   },
-  identification: {
+  Identification: {
     type: String,
     required: true,
   },
@@ -66,5 +66,5 @@ const landlordSchema = new mongoose.Schema({
 });
 
 //save in variable
-var landlord = mongoose.model("landlord_reg", landlordSchema);
+var landlord = mongoose.model("reg", landlordSchema);
 module.exports = landlord;

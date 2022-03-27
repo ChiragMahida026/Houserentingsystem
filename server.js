@@ -17,6 +17,10 @@ app.use(
   "/api/customer_registration",
   require("./routes/api/customer_registration")
 );
+app.use(
+  "/api/landlord_registration",
+  require("./routes/api/landlord_registration")
+);
 app.use("/api/auth", require("./routes/api/auth"));
 const PORT = process.env.PORT || 5000;
 
