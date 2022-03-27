@@ -1,5 +1,4 @@
 import React from "react";
-import { FaCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../layout/css/Errorpage.css";
 
