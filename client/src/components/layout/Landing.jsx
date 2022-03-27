@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 // @ts-ignore
 import img1 from "../layout/images/Zoom_BG9_Stylish-Living-Room.jpg";
 

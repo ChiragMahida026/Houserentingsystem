@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 // @ts-ignore
 import img1 from "../layout/images/real-estate-website-design-bg.jpg";
 // @ts-ignore
@@ -17,6 +18,7 @@ const CustomerRegistration = () => {
     Identification_Proof_Type: "",
     email: "",
     password: "",
+    password2: "",
   });
 
   const {
@@ -30,10 +32,47 @@ const CustomerRegistration = () => {
     Identification_Proof_Type,
     email,
     password,
+    password2,
   } = fromData;
 
   const onChange = (e) =>
     setFormData({ ...fromData, [e.target.name]: e.target.value });
+
+  let save = async (e) => {
+    e.preventDefault();
+    if (password !== password2) {
+      console.log("Password do not match");
+    } else {
+      const newUser = {
+        name,
+        address,
+        dob,
+        DDState,
+        DDCity,
+        contact,
+        Identification_Proof,
+        Identification_Proof_Type,
+        email,
+        password,
+      };
+      try {
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+        const body = JSON.stringify(newUser);
+        const res = await axios.post(
+          "/api/customer_registration",
+          body,
+          config
+        );
+        console.log(res.data);
+      } catch (err) {
+        console.error(err.response.data);
+      }
+    }
+  };
 
   return (
     <>
@@ -58,8 +97,7 @@ const CustomerRegistration = () => {
 
       <form
         className="signup-form"
-        action="##"
-        method="post"
+        onSubmit={save}
         style={{ backgroundColor: "White", width: "60%", marginTop: "-150px" }}
       >
         <div className="form-header">
@@ -82,7 +120,7 @@ const CustomerRegistration = () => {
               name="name"
               value={name}
               onChange={(e) => onChange(e)}
-              pattern="^[a-zA-Z]+ +[a-zA-Z]+$"
+              // pattern="^[a-zA-Z]+ +[a-zA-Z]+$"
               required
             />
           </div>
@@ -94,6 +132,8 @@ const CustomerRegistration = () => {
               rows={4}
               cols={50}
               name="address"
+              value={address}
+              onChange={(e) => onChange(e)}
               minLength={5}
               maxLength={250}
               style={{ height: "auto", resize: "none" }}
@@ -105,6 +145,8 @@ const CustomerRegistration = () => {
               type="Date"
               className="form-input"
               name="dob"
+              value={dob}
+              onChange={(e) => onChange(e)}
               max={1999}
               required
             />
@@ -113,18 +155,32 @@ const CustomerRegistration = () => {
           <div className="horizontal-group">
             <div className="form-group left">
               <label className="label-title">Select State</label>
-              <select name="DDState" className="form-input" id="ddState">
+              <select
+                name="DDState"
+                className="form-input"
+                id="DDState"
+                value={DDState}
+                onChange={(e) => onChange(e)}
+              >
                 <option value="" selected disabled hidden>
                   Select State
                 </option>
+                <option value="News">news</option>
               </select>
             </div>
             <div className="form-group right">
               <label className="label-title">Select City</label>
-              <select name="DDCity" className="form-input" id="ddCity">
+              <select
+                name="DDCity"
+                className="form-input"
+                id="DDCity"
+                value={DDCity}
+                onChange={(e) => onChange(e)}
+              >
                 <option value="" selected disabled hidden>
                   Select City
                 </option>
+                <option value="sasasa">sasasa</option>
               </select>
             </div>
           </div>
@@ -135,12 +191,11 @@ const CustomerRegistration = () => {
               </label>
               <input
                 type="text"
-                maxLength={10}
-                placeholder="enter your contact no"
                 className="form-input"
                 style={{ height: "4% " }}
                 name="Identification_Proof_Type"
-                pattern="^[6789][0-9]{9}$"
+                value={Identification_Proof_Type}
+                onChange={(e) => onChange(e)}
                 required
               />
             </div>
@@ -149,6 +204,8 @@ const CustomerRegistration = () => {
               <input
                 type="file"
                 name="Identification_Proof"
+                value={Identification_Proof}
+                onChange={(e) => onChange(e)}
                 id="choose-file"
                 accept="application/pdf"
                 size={80}
@@ -164,6 +221,8 @@ const CustomerRegistration = () => {
               placeholder="enter your contact no"
               className="form-input"
               name="contact"
+              value={contact}
+              onChange={(e) => onChange(e)}
               pattern="^[6789][0-9]{9}$"
               required
             />
@@ -176,6 +235,8 @@ const CustomerRegistration = () => {
               className="form-input"
               placeholder="enter your email"
               name="email"
+              value={email}
+              onChange={(e) => onChange(e)}
               pattern="^[a-z\.0-9]{6,30}@.+\..+$"
               required
             />
@@ -186,9 +247,25 @@ const CustomerRegistration = () => {
               type="password"
               id="clpass"
               name="password"
+              value={password}
+              onChange={(e) => onChange(e)}
               className="form-input"
               pattern="^.{6,}$"
               placeholder="enter your password"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label className="label-title">Confirm Password </label>
+            <input
+              type="password"
+              id="clpass2"
+              name="password2"
+              value={password2}
+              onChange={(e) => onChange(e)}
+              className="form-input"
+              pattern="^.{6,}$"
+              placeholder="enter your confirm password"
               required
             />
           </div>

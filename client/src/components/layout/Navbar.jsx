@@ -58,7 +58,7 @@ const Navbar = () => {
                 </li>
 
                 <li className="nav-item">
-                  <a className="nav-link" href="#contact-section-container">
+                  <a className="nav-link" href="/#contact-section-container">
                     <FaPhoneSquareAlt />
                     &nbsp;Contact Us
                   </a>
