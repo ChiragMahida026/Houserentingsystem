@@ -7,7 +7,7 @@ const config = require("config");
 const { check, validationResult } = require("express-validator/check");
 
 //landlord Registration Model
-const landlord = require("../../models/landlord_reg");
+const landlord_reg = require("../../models/landlord_reg");
 
 //@route POST api/landlord_registration
 //@desc Register landlord
@@ -77,6 +77,7 @@ router.post(
         r: "pg",
         d: "mm", //404
       });
+      
       landlord = new landlord_reg({
         name,
         email,
