@@ -6,15 +6,13 @@ const app = express();
 //connect Database
 connectDB();
 
-app.get("/", (req, res) => res.send("API Starting"));
-
 //Init Middleware
 // @ts-ignore
 app.use(express.json({ extended: false }));
 
 //Define Routes
 app.use(
-  "/api/customer_registration",
+  "/routes/api/customer_registration",
   require("./routes/api/customer_registration")
 );
 app.use(

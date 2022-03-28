@@ -7,7 +7,7 @@ const config = require("config");
 const { check, validationResult } = require("express-validator/check");
 
 //landlord Registration Model
-const landlord_reg = require("../../models/landlord_reg");
+const landlord_reg = require("../../models/cust_reg");
 
 //@route POST api/landlord_registration
 //@desc Register landlord
@@ -16,16 +16,15 @@ const landlord_reg = require("../../models/landlord_reg");
 router.post(
   "/",
   [
-    check("name", "Name is required").not().isEmpty(),
+    check("c_name", "Name is required").not().isEmpty(),
     check("email", "Please include a valid email").isEmail(),
     check("contact", "Enter Valid Number").matches(RegExp("^[6-9]\\d{9}$")),
     check("dob", "Enter Date Of Birth").not().isEmpty(),
-    check("Current_address", "Current Address is Required").not().isEmpty(),
+    check("address", "Current Address is Required").not().isEmpty(),
     check("city", "select City").not().isEmpty(),
     check("state", "selct state").not().isEmpty(),
-    check("Identificationtype").not().isEmpty(),
-    check("Identification").not().isEmpty(),
-    check("usertype").not().isEmpty(),
+    check("Identification_proof_type").not().isEmpty(),
+    check("Identification_proof").not().isEmpty(),
     check(
       "password",
       "Please enter a password with 6 or more character"
@@ -41,16 +40,17 @@ router.post(
     }
 
     const {
-      name,
+      c_name,
       email,
       contact,
       dob,
-      current_address,
+      address,
       city,
       state,
-      Identificationtype,
-      Identification,
-      usertype,
+      Identification_proof_type,
+      Identification_proof,
+      avatar,
+      usertype1,
       password,
     } = req.body;
 
@@ -77,24 +77,28 @@ router.post(
         r: "pg",
         d: "mm", //404
       });
-      
+
+      usertype1: "L";
+
       landlord = new landlord_reg({
-        name,
+        c_name,
         email,
         contact,
         dob,
-        current_address,
+        address,
         city,
         state,
-        Identificationtype,
-        Identification,
-        usertype,
+        Identification_proof_type,
+        Identification_proof,
+        avatar,
+        usertype: "L",
         password,
       });
 
       //Encrypt Password using bcrypt
       const salt = await bcrypt.genSalt(10); //more you have more you secure
       landlord.password = await bcrypt.hash(password, salt);
+      landlord.usertype1 = "L";
       await landlord.save();
 
       //Return Jsonwebtoken

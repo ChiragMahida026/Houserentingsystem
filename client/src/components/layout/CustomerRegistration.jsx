@@ -4,8 +4,9 @@ import axios from "axios";
 import img1 from "../layout/images/real-estate-website-design-bg.jpg";
 // @ts-ignore
 import img2 from "../layout/images/2f12cb22-293c-4a95-81b4-699a909f18c5-Buildingourownhouse.webp";
+import { Redirect, Route } from "react-router-dom";
 import "../layout/css/Regcss.css";
-
+import Login from "./Login";
 const CustomerRegistration = () => {
   const [fromData, setFormData] = useState({
     name: "",
@@ -56,18 +57,24 @@ const CustomerRegistration = () => {
         password,
       };
       try {
+        console.log(newUser);
         const config = {
           headers: {
             "Content-Type": "application/json",
           },
         };
         const body = JSON.stringify(newUser);
+        console.log(body);
         const res = await axios.post(
-          "/api/customer_registration",
+          "routes/api/customer_registration",
           body,
           config
         );
-        console.log(res.data);
+        if (res.status === 200) {
+          window.location.href = "/login";
+        } else {
+          //put alert
+        }
       } catch (err) {
         console.error(err.response.data);
       }
@@ -96,6 +103,8 @@ const CustomerRegistration = () => {
       </div>
 
       <form
+        action="../../../../routes/api/customer_registration"
+        method="post"
         className="signup-form"
         onSubmit={save}
         style={{ backgroundColor: "White", width: "60%", marginTop: "-150px" }}

@@ -15,47 +15,33 @@ const cust_reg = require("../../models/cust_reg");
 
 router.post(
   "/",
-  [
-    check("c_name", "Name is required").not().isEmpty(),
-    check("email", "Please include a valid email").isEmail(),
-    check("contact", "Enter Valid Number").matches(RegExp("^[6-9]\\d{9}$")),
-    check("dob", "Enter Date Of Birth").not().isEmpty(),
-    check("address", "Current Address is Required").not().isEmpty(),
-    check("city", "select City").not().isEmpty(),
-    check("state", "selct state").not().isEmpty(),
-    check("Identification_proof_type").not().isEmpty(),
-    check("Identification_proof").not().isEmpty(),
-    check(
-      "password",
-      "Please enter a password with 6 or more character"
-    ).isLength({
-      min: 6,
-    }),
-  ],
+
   //Using async
   async (req, res) => {
     const errors = validationResult(req);
+    console.log(req.body);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
-    const {
-      c_name,
-      email,
-      contact,
-      dob,
-      address,
-      city,
-      state,
-      Identification_proof_type,
-      Identification_proof,
-      password,
-    } = req.body;
+    const salt = await bcrypt.genSalt(10);
+    let user = new cust_reg({
+      c_name: req.body.name,
+      email: req.body.email,
+      contact: req.body.contact,
+      dob: req.body.dob,
+      address: req.body.address,
+      city: req.body.DDCity,
+      state: req.body.DDState,
+      Identification_proof_type: req.body.Identification_Proof_Type,
+      Identification_proof: req.body.Identification_Proof,
+      password: await bcrypt.hash(req.body.password, salt),
+    });
 
     try {
+      console.log(user);
       //See if User exits
-      let cust = await cust_reg.findOne({ email });
-      let con = await cust_reg.findOne({ contact });
+      let cust = await cust_reg.findOne({ email: req.body.email });
+      let con = await cust_reg.findOne({ contact: req.body.contact });
 
       if (cust) {
         return res
@@ -70,34 +56,20 @@ router.post(
       }
 
       //get Users gravatar
-      const avatar = gravatar.url(email, {
+      const avatar = gravatar.url(req.body.email, {
         s: "200",
         r: "pg",
         d: "mm", //404
       });
-      cust = new cust_reg({
-        c_name,
-        email,
-        contact,
-        dob,
-        address,
-        city,
-        state,
-        Identification_proof_type,
-        Identification_proof,
-        avatar,
-        password,
-      });
-
       //Encrypt Password using bcrypt
-      const salt = await bcrypt.genSalt(10); //more you have more you secure
-      cust.password = await bcrypt.hash(password, salt);
-      await cust.save();
+      //more you have more you secure
+
+      user.save();
 
       //Return Jsonwebtoken
       const payload = {
         user: {
-          id: cust.id,
+          id: user.id,
         },
       };
       jwt.sign(
