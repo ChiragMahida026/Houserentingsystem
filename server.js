@@ -31,12 +31,16 @@ app.use(
   "/routes/api/customer_registration",
   require("./routes/api/customer_registration")
 );
+
+// app.use("/routes/api/sendmail", require("./routes/api/sendmail"));
 // app.use(
 //   "/routes/api/landlord_registration/email",
 //   require("./routes/api/email")
 // );
 
 app.use("/routes/api/email", require("./routes/api/email"));
+app.use("/routes/api/sendmail", require("./routes/api/sendmail"));
+
 app.use(
   "/routes/api/landlord_registration",
   require("./routes/api/landlord_registration")

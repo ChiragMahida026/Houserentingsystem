@@ -34,7 +34,16 @@ const Login = () => {
       console.log(body);
       const res = await axios.post("routes/api/auth", body, config);
       if (res.status === 200) {
+        var demos = "18bmiit050@gmail.com";
+        if (email === demos) {
+          console.log("demosss");
+          window.location.href = "/";
+        }
+        // if (usertype == "L") {
         window.location.href = "/";
+        // } else {
+        //   console.log("errorssskaskalsk");
+        // }
       } else {
         //put alert
       }

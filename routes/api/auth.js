@@ -30,10 +30,6 @@ router.get("/", auth, async (req, res) => {
 
 router.post(
   "/",
-  // [
-  //   check("email", "Please Include a Valid Email").isEmail(),
-  //   check("password", "Password is Required").exists(),
-  // ],
 
   //Using async
   async (req, res) => {
@@ -45,6 +41,7 @@ router.post(
     let login_user = new User({
       email: req.body.email,
       password: req.body.password,
+      usertype: req.body.usertype,
     });
 
     try {
@@ -56,6 +53,16 @@ router.post(
           .status(400)
           .json({ errors: [{ msg: "Invalid Credentials" }] });
       }
+
+      // if (user.usertype == "L") {
+      // } else {
+      // }
+
+      // if (req.body.usertype != user.usertype) {
+      //   return res
+      //     .status(400)
+      //     .json({ errors: [{ msg: "Invalid Credentials" }] });
+      // }
 
       //match password
       const isMatch = await bcrypt.compare(req.body.password, user.password); //(plainpassword,encrypted password) compareition

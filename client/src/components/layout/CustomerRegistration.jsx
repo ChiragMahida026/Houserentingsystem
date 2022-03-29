@@ -4,9 +4,7 @@ import axios from "axios";
 import img1 from "../layout/images/real-estate-website-design-bg.jpg";
 // @ts-ignore
 import img2 from "../layout/images/2f12cb22-293c-4a95-81b4-699a909f18c5-Buildingourownhouse.webp";
-import { Redirect, Route } from "react-router-dom";
 import "../layout/css/Regcss.css";
-import Login from "./Login";
 const CustomerRegistration = () => {
   const [fromData, setFormData] = useState({
     name: "",
@@ -20,6 +18,7 @@ const CustomerRegistration = () => {
     email: "",
     password: "",
     password2: "",
+    otp: "",
   });
 
   const {
@@ -34,6 +33,7 @@ const CustomerRegistration = () => {
     email,
     password,
     password2,
+    otp,
   } = fromData;
 
   const onChange = (e) =>
@@ -80,7 +80,44 @@ const CustomerRegistration = () => {
       }
     }
   };
+  function Set() {
+    var x = document.getElementById("myDIV");
+    var y = document.getElementById("boton1");
+    var z = document.getElementById("boton");
+    var a = document.getElementById("boton2");
+    var b = document.getElementById("boton3");
+    var em = document.getElementById("email");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+    if (y.style.display === "none") {
+      y.style.display = "block";
+    } else {
+      y.style.display = "none";
+    }
+    if (z.style.display === "none") {
+      z.style.display = "block";
+    } else {
+      z.style.display = "none";
+    }
+    if (a.style.display === "none") {
+      a.style.display = "block";
+    } else {
+      a.style.display = "none";
+    }
+    if (b.style.display === "none") {
+      b.style.display = "block";
+    } else {
+      b.style.display = "none";
+    }
 
+    const res = axios.get("routes/api/email?email=" + email);
+  }
+  function set2() {
+    const res = axios.get("routes/api/email?email=" + email);
+  }
   return (
     <>
       <div className="child">
@@ -279,11 +316,47 @@ const CustomerRegistration = () => {
             />
           </div>
           <input
+            type="button"
+            name="OTP"
+            className="btn btn-primary"
+            value="Send OTP"
+            id="boton"
+            style={{ display: "block" }}
+            onClick={Set}
+          />
+          <label
+            className="label-title"
+            id="boton3"
+            style={{ display: "none" }}
+          >
+            Enter OTP{" "}
+          </label>
+          <input
+            type="text"
+            id="myDIV"
+            name="otp"
+            value={otp}
+            onChange={(e) => onChange(e)}
+            pattern="^.{6,}$"
+            className="form-input"
+            style={{ display: "none" }}
+          ></input>
+          <input
+            type="button"
+            name="OTP"
+            className="btn btn-primary"
+            value="Resend OTP"
+            id="boton2"
+            style={{ display: "none" }}
+            onClick={set2}
+          />
+          <input
             type="submit"
             name="submit"
             className="btn btn-primary"
             value="Registration"
-            id="boton"
+            id="boton1"
+            style={{ display: "none" }}
           />
         </div>
       </form>

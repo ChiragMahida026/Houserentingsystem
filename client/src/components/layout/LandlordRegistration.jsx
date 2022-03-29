@@ -1,12 +1,9 @@
-import React, { useState, Component } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 // @ts-ignore
 import img1 from "../layout/images/Zoom_BG5_Cozy-Living-Room.jpg";
 // @ts-ignore
 import img2 from "../layout/images/8b5d6f32-0406-42c3-b4eb-7d79054bf948-HomeSweetHome.webp";
-import $ from "jquery";
-import Login from "./Login";
-import { Route } from "react-router-dom";
 
 const LandlordRegistration = () => {
   const [fromData, setFormData] = useState({
@@ -88,6 +85,8 @@ const LandlordRegistration = () => {
     var x = document.getElementById("myDIV");
     var y = document.getElementById("boton1");
     var z = document.getElementById("boton");
+    var a = document.getElementById("boton2");
+    var b = document.getElementById("boton3");
     var em = document.getElementById("email");
     if (x.style.display === "none") {
       x.style.display = "block";
@@ -104,7 +103,20 @@ const LandlordRegistration = () => {
     } else {
       z.style.display = "none";
     }
+    if (a.style.display === "none") {
+      a.style.display = "block";
+    } else {
+      a.style.display = "none";
+    }
+    if (b.style.display === "none") {
+      b.style.display = "block";
+    } else {
+      b.style.display = "none";
+    }
 
+    const res = axios.get("routes/api/email?email=" + email);
+  }
+  function set2() {
     const res = axios.get("routes/api/email?email=" + email);
   }
   return (
@@ -313,6 +325,13 @@ const LandlordRegistration = () => {
             style={{ display: "block" }}
             onClick={Set}
           />
+          <label
+            className="label-title"
+            id="boton3"
+            style={{ display: "none" }}
+          >
+            Enter OTP{" "}
+          </label>
           <input
             type="text"
             id="myDIV"
@@ -323,6 +342,15 @@ const LandlordRegistration = () => {
             className="form-input"
             style={{ display: "none" }}
           ></input>
+          <input
+            type="button"
+            name="OTP"
+            className="btn btn-primary"
+            value="Resend OTP"
+            id="boton2"
+            style={{ display: "none" }}
+            onClick={set2}
+          />
           <input
             type="submit"
             name="submit"
