@@ -41,7 +41,7 @@ app.use(
   "/routes/api/landlord_registration",
   require("./routes/api/landlord_registration")
 );
-app.use("/api/auth", require("./routes/api/auth"));
+app.use("/routes/api/auth", require("./routes/api/auth"));
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`server started ${PORT}`));

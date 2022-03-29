@@ -30,10 +30,10 @@ router.get("/", auth, async (req, res) => {
 
 router.post(
   "/",
-  [
-    check("email", "Please Include a Valid Email").isEmail(),
-    check("password", "Password is Required").exists(),
-  ],
+  // [
+  //   check("email", "Please Include a Valid Email").isEmail(),
+  //   check("password", "Password is Required").exists(),
+  // ],
 
   //Using async
   async (req, res) => {
@@ -42,11 +42,14 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { email, password } = req.body;
+    let login_user = new User({
+      email: req.body.email,
+      password: req.body.password,
+    });
 
     try {
       //See if User exits
-      let user = await User.findOne({ email });
+      let user = await User.findOne({ email: req.body.email });
 
       if (!user) {
         return res
@@ -55,7 +58,7 @@ router.post(
       }
 
       //match password
-      const isMatch = await bcrypt.compare(password, user.password); //(plainpassword,encrypted password) compareition
+      const isMatch = await bcrypt.compare(req.body.password, user.password); //(plainpassword,encrypted password) compareition
       if (!isMatch) {
         return res
           .status(400)
@@ -64,8 +67,8 @@ router.post(
 
       //Return Jsonwebtoken
       const payload = {
-        user: {
-          id: user.id,
+        login_user: {
+          id: login_user.id,
         },
       };
       jwt.sign(
