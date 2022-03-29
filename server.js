@@ -1,6 +1,8 @@
 const express = require("express");
 const connectDB = require("./config/db");
 
+const session = require("express-session");
+
 const app = express();
 
 //connect Database
@@ -10,11 +12,31 @@ connectDB();
 // @ts-ignore
 app.use(express.json({ extended: false }));
 
+app.use(
+  session({
+    secret: "secretkey",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {},
+  })
+);
+
 //Define Routes
 app.use(
   "/routes/api/customer_registration",
   require("./routes/api/customer_registration")
 );
+//Define Routes
+app.use(
+  "/routes/api/customer_registration",
+  require("./routes/api/customer_registration")
+);
+// app.use(
+//   "/routes/api/landlord_registration/email",
+//   require("./routes/api/email")
+// );
+
+app.use("/routes/api/email", require("./routes/api/email"));
 app.use(
   "/routes/api/landlord_registration",
   require("./routes/api/landlord_registration")

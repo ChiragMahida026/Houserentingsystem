@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
 import axios from "axios";
 // @ts-ignore
 import img1 from "../layout/images/Zoom_BG5_Cozy-Living-Room.jpg";
 // @ts-ignore
 import img2 from "../layout/images/8b5d6f32-0406-42c3-b4eb-7d79054bf948-HomeSweetHome.webp";
+import $ from "jquery";
+import Login from "./Login";
+import { Route } from "react-router-dom";
 
 const LandlordRegistration = () => {
   const [fromData, setFormData] = useState({
@@ -18,7 +21,7 @@ const LandlordRegistration = () => {
     email: "",
     password: "",
     password2: "",
-    usertype: "l",
+    otp: "",
   });
 
   const {
@@ -33,7 +36,7 @@ const LandlordRegistration = () => {
     email,
     password,
     password2,
-    usertype,
+    otp,
   } = fromData;
 
   const onChange = (e) =>
@@ -55,7 +58,7 @@ const LandlordRegistration = () => {
         Identification_Proof_Type,
         email,
         password,
-        usertype,
+        otp,
       };
       try {
         console.log(newUser);
@@ -81,7 +84,29 @@ const LandlordRegistration = () => {
       }
     }
   };
+  function Set() {
+    var x = document.getElementById("myDIV");
+    var y = document.getElementById("boton1");
+    var z = document.getElementById("boton");
+    var em = document.getElementById("email");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+    if (y.style.display === "none") {
+      y.style.display = "block";
+    } else {
+      y.style.display = "none";
+    }
+    if (z.style.display === "none") {
+      z.style.display = "block";
+    } else {
+      z.style.display = "none";
+    }
 
+    const res = axios.get("routes/api/email?email=" + email);
+  }
   return (
     <>
       <div className="child">
@@ -158,14 +183,6 @@ const LandlordRegistration = () => {
               value={dob}
               onChange={(e) => onChange(e)}
               max={1999}
-              required
-            />
-            <input
-              type="name"
-              className="form-input"
-              name="usertype"
-              value={usertype}
-              onChange={(e) => onChange(e)}
               required
             />
           </div>
@@ -288,11 +305,31 @@ const LandlordRegistration = () => {
             />
           </div>
           <input
+            type="button"
+            name="OTP"
+            className="btn btn-primary"
+            value="Send OTP"
+            id="boton"
+            style={{ display: "block" }}
+            onClick={Set}
+          />
+          <input
+            type="text"
+            id="myDIV"
+            name="otp"
+            value={otp}
+            onChange={(e) => onChange(e)}
+            pattern="^.{6,}$"
+            className="form-input"
+            style={{ display: "none" }}
+          ></input>
+          <input
             type="submit"
             name="submit"
             className="btn btn-primary"
-            value="Registration"
-            id="boton"
+            value="Submit"
+            id="boton1"
+            style={{ display: "none" }}
           />
         </div>
       </form>
