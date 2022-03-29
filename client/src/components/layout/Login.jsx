@@ -34,13 +34,19 @@ const Login = () => {
       console.log(body);
       const res = await axios.post("routes/api/auth", body, config);
       if (res.status === 200) {
-        var demos = "18bmiit050@gmail.com";
-        if (email === demos) {
-          console.log("demosss");
+        console.log(res.data.user.usertype);
+        // @ts-ignore
+        if (res.data.user.usertype === "L") {
+          window.location.href = "/landloard";
+          // @ts-ignore
+        } else if (res.data.user.usertype === "C") {
           window.location.href = "/";
+        } else {
+          window.location.href = "/admin";
         }
+        console.log(res);
         // if (usertype == "L") {
-        window.location.href = "/";
+        //window.location.href = "/";
         // } else {
         //   console.log("errorssskaskalsk");
         // }

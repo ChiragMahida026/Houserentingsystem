@@ -32,6 +32,8 @@ app.use(
   require("./routes/api/customer_registration")
 );
 
+app.use("/routes/api/addhouse", require("./routes/api/addhouse"));
+
 // app.use("/routes/api/sendmail", require("./routes/api/sendmail"));
 // app.use(
 //   "/routes/api/landlord_registration/email",

@@ -17,7 +17,8 @@ router.get("/", auth, async (req, res) => {
   try {
     // @ts-ignore
     const user = await User.findById(req.user.id).select("-password");
-    res.json(user);
+    console.log(user);
+    res.json({ user });
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server Error");
@@ -76,6 +77,7 @@ router.post(
       const payload = {
         login_user: {
           id: login_user.id,
+          usertype: login_user.usertype,
         },
       };
       jwt.sign(
@@ -84,7 +86,7 @@ router.post(
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
-          res.json({ token }); //to get id
+          res.json({ token, user }); //to get id
         }
       );
 
