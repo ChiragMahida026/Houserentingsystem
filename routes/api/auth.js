@@ -76,10 +76,11 @@ router.post(
       //Return Jsonwebtoken
       const payload = {
         login_user: {
-          id: login_user.id,
-          usertype: login_user.usertype,
+          id: user._id,
+          usertype: user.usertype,
         },
       };
+      console.log(user.id);
       jwt.sign(
         payload,
         config.get("jwtSecret"),
