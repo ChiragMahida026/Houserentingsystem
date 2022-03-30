@@ -33,6 +33,18 @@ app.use(
 );
 
 app.use("/routes/api/addhouse", require("./routes/api/addhouse"));
+app.use("/routes/api/viewhouse", require("./routes/api/viewhouse"));
+app.use("/routes/api/updatehouse", require("./routes/api/updatehouse"));
+app.use("/routes/api/deletehouse", require("./routes/api/deletehouse"));
+
+app.use("/routes/api/updateprofile", require("./routes/api/updateprofile"));
+app.use("/routes/api/viewprofile", require("./routes/api/viewprofile"));
+app.use("/routes/api/deleteprofile", require("./routes/api/deleteprofile"));
+app.use("/routes/api/viewallprofile", require("./routes/api/viewallprofile"));
+app.use("/routes/api/viewspprofile", require("./routes/api/viewspprofile"));
+
+app.use("/routes/api/requesthome", require("./routes/api/requesthome"));
+// app.use("/routes/api/responsehome", require("./routes/api/responsehome"));
 
 // app.use("/routes/api/sendmail", require("./routes/api/sendmail"));
 // app.use(
