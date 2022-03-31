@@ -44,7 +44,7 @@ app.use("/routes/api/viewallprofile", require("./routes/api/viewallprofile"));
 app.use("/routes/api/viewspprofile", require("./routes/api/viewspprofile"));
 
 app.use("/routes/api/requesthome", require("./routes/api/requesthome"));
-// app.use("/routes/api/responsehome", require("./routes/api/responsehome"));
+app.use("/routes/api/responsehome", require("./routes/api/responsehome"));
 
 // app.use("/routes/api/sendmail", require("./routes/api/sendmail"));
 // app.use(

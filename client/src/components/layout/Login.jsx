@@ -3,9 +3,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "../layout/css/Logincss.css";
 // @ts-ignore
-import logo from "../layout/images/34fe7f92-8594-40be-b689-a0c3ea8af779-Security.webp";
+import logo from "./images/34fe7f92-8594-40be-b689-a0c3ea8af779-Security.webp";
 // @ts-ignore
-import bg from "../layout/images/94-948582_light-colorful-background-hd.jpg";
+import bg from "./images/94-948582_light-colorful-background-hd.jpg";
 
 const Login = () => {
   const [fromData, setFormData] = useState({
@@ -113,7 +113,7 @@ const Login = () => {
                       <label>Remember me</label>
                     </div>
                     <div className="pass-link">
-                      <Link to="#">Forgot password?</Link>
+                      <Link to="/forgetpass">Forgot password?</Link>
                     </div>
                   </div>
                   <div className="field">

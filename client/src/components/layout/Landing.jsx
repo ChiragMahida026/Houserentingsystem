@@ -16,7 +16,7 @@ const Landing = () => {
         <div className="containser">
           <div className="row">
             <div className="col-xs-12">
-              <h1>Welcome To!House Renting System</h1>
+              <h1>Welcome To!Roomies</h1>
               <p className="">A HOME CHANGES EVERYTHING.</p>
             </div>
           </div>

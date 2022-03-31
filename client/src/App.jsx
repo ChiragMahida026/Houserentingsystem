@@ -9,6 +9,8 @@ import Login from "./components/layout/Login";
 import Footer from "./components/layout/Footer";
 import Error_page from "./components/layout/Error_page";
 import LandlordRegistration from "./components/layout/LandlordRegistration";
+import ForgetPassword from "./components/layout/ForgetPassword";
+import AdminNavbar from "./components/layout/AdminNavbar";
 
 const App = () => {
   return (
@@ -32,6 +34,8 @@ const App = () => {
               component={LandlordRegistration}
             />
             <Route exact path="/error" component={Error_page} />
+
+            <Route exact path="/forgetpass" component={ForgetPassword} />
           </Switch>
         </section>
       </Fragment>
