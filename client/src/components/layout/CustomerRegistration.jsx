@@ -134,7 +134,7 @@ const CustomerRegistration = () => {
           <div className="container">
             <div className="row">
               <div className="col-xs-12">
-                <h1>Landlord Registration</h1>
+                <h1>Customer Registration</h1>
               </div>
             </div>
           </div>
@@ -142,7 +142,7 @@ const CustomerRegistration = () => {
       </div>
 
       <form
-        action="../../../../routes/api/landlord_registration"
+        action="../../../../routes/api/customer_registration"
         method="post"
         className="signup-form"
         onSubmit={save}
