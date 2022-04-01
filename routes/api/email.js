@@ -17,13 +17,13 @@ router.get("/", async (req, res) => {
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "18bmiit050@gmail.com",
-        pass: "a=Amit111/////",
+        user: "rentalhousecd@gmail.com",
+        pass: "rentalhousecd95",
       },
     });
 
     const mailOptions = {
-      from: "18bmiit050@gmail.com", // sender address
+      from: "rentalhousecd@gmail.com", // sender address
       to: req.query.email, // list of receivers
       subject: "Roomies Signup OTP", // Subject line
       html:
