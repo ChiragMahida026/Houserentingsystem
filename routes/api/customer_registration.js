@@ -45,20 +45,17 @@ router.post(
 
       try {
         console.log(user);
-        //See if User exits
+        // See if User exits
         let cust = await cust_reg.findOne({ email: req.body.email });
         let con = await cust_reg.findOne({ contact: req.body.contact });
 
         if (cust) {
-          return res
-            .status(400)
-            .json({ errors: [{ msg: "User alraedy exists" }] });
+          res.status(404).json("User alraedy exists");
+          return;
         }
         if (con) {
-          console.error(con);
-          return res
-            .status(400)
-            .json({ errors: [{ msg: "contact alraedy exists" }] });
+          res.status(404).json("contact alraedy exists");
+          return;
         }
 
         //get Users gravatar

@@ -50,15 +50,12 @@ router.post(
         let con = await landlord_reg.findOne({ contact: req.body.contact });
 
         if (cust) {
-          return res
-            .status(400)
-            .json({ errors: [{ msg: "User alraedy exists" }] });
+          res.status(404).json("User alraedy exists");
+          return;
         }
         if (con) {
-          console.error(con);
-          return res
-            .status(400)
-            .json({ errors: [{ msg: "contact alraedy exists" }] });
+          res.status(404).json("contact alraedy exists");
+          return;
         }
 
         //get Users gravatar
