@@ -87,6 +87,7 @@ const LandlordRegistration = () => {
     var z = document.getElementById("boton");
     var a = document.getElementById("boton2");
     var b = document.getElementById("boton3");
+    // eslint-disable-next-line
     var em = document.getElementById("email");
     if (x.style.display === "none") {
       x.style.display = "block";
@@ -113,10 +114,11 @@ const LandlordRegistration = () => {
     } else {
       b.style.display = "none";
     }
-
+    // eslint-disable-next-line
     const res = axios.get("routes/api/email?email=" + email);
   }
   function set2() {
+    // eslint-disable-next-line
     const res = axios.get("routes/api/email?email=" + email);
   }
   return (

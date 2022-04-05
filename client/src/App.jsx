@@ -10,7 +10,9 @@ import Footer from "./components/layout/Footer";
 import Error_page from "./components/layout/Error_page";
 import LandlordRegistration from "./components/layout/LandlordRegistration";
 import ForgetPassword from "./components/layout/ForgetPassword";
-import AdminNavbar from "./components/layout/AdminNavbar";
+import Dash_cust from "./components/layout/Dash_cust";
+import Dash_Admin from "./components/layout/Dash_Admin";
+import Dash_Landlord from "./components/layout/Dash_Landlord";
 
 const App = () => {
   return (
@@ -36,6 +38,11 @@ const App = () => {
             <Route exact path="/error" component={Error_page} />
 
             <Route exact path="/forgetpass" component={ForgetPassword} />
+
+            {/* //Dashboard */}
+            <Route exact path="/dashcust" component={Dash_cust} />
+            <Route exact path="/dashadmin" component={Dash_Admin} />
+            <Route exact path="/dashlandlord" component={Dash_Landlord} />
           </Switch>
         </section>
       </Fragment>

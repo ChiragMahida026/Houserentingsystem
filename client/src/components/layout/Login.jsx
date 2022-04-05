@@ -37,12 +37,12 @@ const Login = () => {
         console.log(res.data.user.usertype);
         // @ts-ignore
         if (res.data.user.usertype === "L") {
-          window.location.href = "/landloard";
+          window.location.href = "/dashlandlord";
           // @ts-ignore
         } else if (res.data.user.usertype === "C") {
-          window.location.href = "/";
+          window.location.href = "/dashcust";
         } else {
-          window.location.href = "/admin";
+          window.location.href = "/dashadmin";
         }
         console.log(res);
         // if (usertype == "L") {
