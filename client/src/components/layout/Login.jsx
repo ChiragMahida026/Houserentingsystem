@@ -37,19 +37,15 @@ const Login = () => {
         console.log(res.data.user.usertype);
         // @ts-ignore
         if (res.data.user.usertype === "L") {
-          window.location.href = "/dashlandlord";
+          // window.location.href = "/dashlandlord";
           // @ts-ignore
         } else if (res.data.user.usertype === "C") {
           window.location.href = "/dashcust";
         } else {
-          window.location.href = "/dashadmin";
+          // window.location.href = "/dashadmin";
         }
         console.log(res);
-        // if (usertype == "L") {
-        //window.location.href = "/";
-        // } else {
-        //   console.log("errorssskaskalsk");
-        // }
+        localStorage.setItem("myData", res.data.user.usertype);
       } else {
         //put alert
       }
