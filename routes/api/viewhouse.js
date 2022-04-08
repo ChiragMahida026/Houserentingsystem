@@ -31,4 +31,16 @@ router.get("/", auth, async (req, res) => {
   });
 });
 
+router.get("/allvisitor", async (req, res) => {
+  House.find((err, house) => {
+    if (err) {
+      return res.json({ err: err });
+    } else if (house == null) {
+      return res.json({ err: "no house avalible" });
+    } else {
+      return res.json({ data: house });
+    }
+  });
+});
+
 module.exports = router;

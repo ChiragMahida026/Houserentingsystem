@@ -6,7 +6,7 @@ const sidebars = () => {
     <>
       <ul className="qwerty">
         <li className="class21">
-          <a href="#" className="asdf">
+          <a href="#Home" className="asdf">
             Home
           </a>
         </li>

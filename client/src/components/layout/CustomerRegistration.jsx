@@ -242,14 +242,17 @@ const CustomerRegistration = () => {
               <select
                 className="form-input"
                 name="Identification_Proof_Type"
+                style={{ height: "30px" }}
                 value={Identification_Proof_Type}
                 onChange={(e) => onChange(e)}
               >
                 <option value="" selected disabled hidden>
                   Select Identificatication Proof Type
                 </option>
-                <option value="Addhar Card">Addhar card</option>
-                <option value="Pan Card">PanCard</option>
+                <option value="Aadhaar Card">Aadhaar Card</option>
+                <option value="PAN Card">PAN Card</option>
+                <option value="passport">passport</option>
+                <option value="Voter ID Card">Voter ID Card</option>
               </select>
             </div>
             <div className="form-group right">

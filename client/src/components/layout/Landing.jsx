@@ -1,6 +1,8 @@
 import React from "react";
 // @ts-ignore
 import img1 from "../layout/images/Zoom_BG9_Stylish-Living-Room.jpg";
+import Card from "../layout/Card";
+import "./css/cardcss.css";
 
 const Landing = () => {
   return (
@@ -102,7 +104,13 @@ const Landing = () => {
             margin: "revert",
           }}
         />
-        <div className="container d-flex justify-content-center"></div>
+        <div className="container d-flex justify-content-center">
+          <div className="App">
+            <div className="container">
+              <Card />
+            </div>
+          </div>
+        </div>
       </nav>
 
       <div className="section-container" id="contact-section-container">

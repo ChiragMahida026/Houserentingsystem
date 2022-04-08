@@ -6,6 +6,10 @@ import "../layout/css/Logincss.css";
 import logo from "./images/34fe7f92-8594-40be-b689-a0c3ea8af779-Security.webp";
 // @ts-ignore
 import bg from "./images/94-948582_light-colorful-background-hd.jpg";
+import Swalfire from "sweetalert2";
+import swal from "sweetalert";
+import $ from "../../../node_modules/jquery/dist/jquery";
+import "animate.css";
 
 const Login = () => {
   const [fromData, setFormData] = useState({
@@ -23,6 +27,7 @@ const Login = () => {
       email,
       password,
     };
+
     try {
       console.log(newUser);
       const config = {
@@ -30,10 +35,19 @@ const Login = () => {
           "Content-Type": "application/json",
         },
       };
+
       const body = JSON.stringify(newUser);
       console.log(body);
       const res = await axios.post("routes/api/auth", body, config);
       if (res.status === 200) {
+        swal({
+          title: "Success",
+          // text: "I will close in 2 seconds.",
+          timer: 1000,
+          icon: "success",
+          // @ts-ignore
+          button: false,
+        });
         console.log(res.data.user.usertype);
         // @ts-ignore
         if (res.data.user.usertype === "L") {
@@ -50,7 +64,12 @@ const Login = () => {
         //put alert
       }
     } catch (err) {
-      console.error(err.response.data);
+      console.error(err.response);
+      Swalfire.fire({
+        title: "Somthing Wrong!",
+        icon: "error",
+        html: "Invalid Credentials",
+      });
     }
   };
   return (
