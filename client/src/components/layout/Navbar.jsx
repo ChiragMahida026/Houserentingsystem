@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <header className="header">
+      {/* <header className="header"> */}
         <nav className="navbar navbar-expand-lg header-nav fixed-top">
           <div className="container-fluid">
             <Link className="navbar-brand" to="/">
@@ -88,7 +88,7 @@ const Navbar = () => {
             </div>
           </div>
         </nav>
-      </header>
+      {/* </header> */}
     </>
   );
 };
