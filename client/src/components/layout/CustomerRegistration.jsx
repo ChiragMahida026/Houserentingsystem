@@ -366,7 +366,7 @@ const CustomerRegistration = () => {
             className="btn btn-primary"
             value="Submit"
             id="boton1"
-            style={{ display: "none" }}
+            style={{ display: "none",margin:"auto" }}
           />
         </div>
       </form>

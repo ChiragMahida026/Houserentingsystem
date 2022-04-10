@@ -27,7 +27,16 @@ const sidebars = () => {
         </li>
       </ul>
       <section>
-        <i className="fa fa-bars"></i>
+      <i
+          className="fa fa-bars"
+          style={{
+            position: "fixed",
+            margin: "20px 25px",
+            fontSize: "40px",
+            color: "orangered",
+            cursor: "pointer",
+          }}
+        ></i>
         <div className="sec1"></div>
         <h2>User Details</h2>
         <p style={{ padding: "0 20px 10px 20px", textAlign: "center" }}>
