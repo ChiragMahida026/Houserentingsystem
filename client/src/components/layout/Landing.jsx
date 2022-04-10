@@ -2,6 +2,7 @@ import React from "react";
 // @ts-ignore
 import img1 from "../layout/images/Zoom_BG9_Stylish-Living-Room.jpg";
 import Card from "../layout/Card";
+import Getintouch from "../layout/Getintouch";
 import "./css/cardcss.css";
 
 const Landing = () => {
@@ -113,70 +114,7 @@ const Landing = () => {
         </div>
       </nav>
 
-      <div className="section-container" id="contact-section-container">
-        <div className="container contact-form-container">
-          <div className="row">
-            <div className="col-xs-12 col-md-offset-2 col-md-8">
-              <div className="section-container-spacer">
-                <h2 className="text-center">Get in touch</h2>
-                <hr
-                  style={{
-                    border: "4px solid blueviolet",
-                    width: "30%",
-                    margin: "revert",
-                  }}
-                />
-              </div>
-              <form action="">
-                <div className="row">
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        name="name"
-                        className="form-control"
-                        placeholder="Full Name"
-                        pattern="^[a-zA-Z]+ [a-zA-Z]+$"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <input
-                        type="email"
-                        name="email"
-                        className="form-control"
-                        placeholder="Email"
-                        pattern="^[a-z\.0-9]{6,30}@.+\..+$"
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <textarea
-                    className="form-control"
-                    rows={3}
-                    placeholder="Enter your message"
-                    minLength={5}
-                    maxLength={250}
-                    style={{ resize: "none" }}
-                    required
-                  ></textarea>
-                </div>
-                <input
-                  type="submit"
-                  className="btn btn-primary"
-                  name="submitGetInTouch"
-                  value="Send message"
-                />
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Getintouch/>
     </>
   );
 };
