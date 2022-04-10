@@ -72,7 +72,7 @@ const Footer = () => {
               </li>
               <li className="my-2">
                 <FaEnvelope />
-                &nbsp; Rommies@gmail.com
+                &nbsp; rentalhousecd@gmail.com
               </li>
               <li className="my-2">
                 <FaPhoneAlt />
