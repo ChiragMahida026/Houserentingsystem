@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Fragment } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
@@ -47,6 +48,7 @@ const App = () => {
             />
             <Route exact path="/error" component={Error_page} />
             <Route exact path="/forgetpass" component={ForgetPassword} />
+            {/* <Route path="*" component={Error_page} /> */}
             {/* //Dashboard */}
             {localStorage.getItem("myData") === "A"} ?{" "}
             <Route exact path="/dashlandlord" component={Dash_Admin} /> :""

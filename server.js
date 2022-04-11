@@ -1,6 +1,6 @@
 const express = require("express");
 const connectDB = require("./config/db");
-
+const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
 const app = express();
@@ -12,14 +12,21 @@ connectDB();
 // @ts-ignore
 app.use(express.json({ extended: false }));
 
+// app.use(express.urlencoded({ extended: true }));
+
+// creating 24 hours from milliseconds
+const oneDay = 1000 * 60 * 60 * 24;
+
 app.use(
   session({
     secret: "secretkey",
     resave: false,
     saveUninitialized: true,
-    cookie: {},
+    cookie: { maxAge: oneDay },
   })
 );
+
+app.use(cookieParser());
 
 //Define Routes
 app.use(
