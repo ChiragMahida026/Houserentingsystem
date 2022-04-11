@@ -1,66 +1,51 @@
-// @ts-nocheck
-import React, { Fragment } from "react";
+import React from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
-import Navbar from "./components/layout/Navbar";
-import { Route, Switch } from "react-router-dom";
-import Landing from "./components/layout/Landing";
+import { Routes, Route } from "react-router-dom";
+import Admin from "./components/Admin";
+import Backendlayout from "./components/Admin/Backendlayout";
+import Frontend from "./components/Users/Frontend";
+import Error from "./components/Error";
+import Home from "./components/Home";
+import Landing from "./components/Users/Landing";
+import Login from "./components/Users/Login";
 import CustomerRegistration from "./components/layout/CustomerRegistration";
-import Login from "./components/layout/Login";
-import Footer from "./components/layout/Footer";
-import Error_page from "./components/layout/Error_page";
 import LandlordRegistration from "./components/layout/LandlordRegistration";
-import ForgetPassword from "./components/layout/ForgetPassword";
-import Dash_Admin from "./components/layout/Dash_Admin";
-import Sidebars from "./components/layout/Sidebars";
-import Pincode from "./components/layout/Pincode";
-// let data = localStorage.getItem("myData");
-// console.log(data);
-// if (localStorage.getItem("myData") === "L") {
-//   console.log("Hellos");
-// }
-// if (localStorage.getItem("myData") === "C") {
-//   console.log("fsfsfs");
-// }
-const App = () => {
-  return (
-    <>
-      {/* {localStorage.getItem("myData") === "C" ? <Navbar /> : "unauthorized"} */}
-      {/* <Navbar /> */}
-      <Fragment>
-        {/* {localStorage.getItem("myData") === "A" ? "" : <Navbar />} */}
-        <Route exact component={Navbar} />
-        <Route exact path="/" component={Landing} />
+import Main_show from "./components/Users/Customer/Main_show";
+import LMain_show from "./components/Users/Landlord/LMain_show";
+import Cust_Landing from "./components/Users/Customer/Cust_Landing";
+import Landlord_Landing from "./components/Users/Landlord/Landlord_Landing";
 
-        <section className="container">
-          <Switch>
-            <Route
-              exact
-              path="/customer_reg"
-              // @ts-ignore
-              component={CustomerRegistration}
-            />
-            <Route exact path="/login" component={Login} />
-            <Route
-              exact
-              path="/landlord_reg"
-              component={LandlordRegistration}
-            />
-            <Route exact path="/error" component={Error_page} />
-            <Route exact path="/forgetpass" component={ForgetPassword} />
-            {/* <Route path="*" component={Error_page} /> */}
-            {/* //Dashboard */}
-            {localStorage.getItem("myData") === "A"} ?{" "}
-            <Route exact path="/dashlandlord" component={Dash_Admin} /> :""
-          </Switch>
-        </section>
-      </Fragment>
-      {localStorage.getItem("myData") === "A" ? "" : <Footer />}
-    </>
-    // <>
-    // // <Sidebars />
-    // // </>
+function App() {
+  return (
+    <div className="App">
+      <Routes>
+        {/* main file for change middle content */}
+        <Route path="/" element={<Frontend />}>
+          <Route index element={<Landing />} />
+          <Route path="login" element={<Login />} />
+          <Route path="customer_reg" element={<CustomerRegistration />} />
+          <Route path="landlord_reg" element={<LandlordRegistration />} />
+        </Route>
+
+        <Route path="/dashadmin" element={<Backendlayout />}>
+          <Route index element={<Admin />} />
+          <Route path="settings" element={<Error />} />
+        </Route>
+
+        <Route path="/dashcust" element={<Main_show />}>
+          <Route index element={<Cust_Landing />} />
+          <Route path="settings" element={<Error />} />
+        </Route>
+
+        <Route path="dashlandlord" element={<Main_show />}>
+          <Route index element={<Landlord_Landing />} />
+          <Route path="settings" element={<Error />} />
+        </Route>
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </div>
   );
-};
+}
 
 export default App;
