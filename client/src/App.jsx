@@ -2,7 +2,7 @@ import React from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import { Routes, Route } from "react-router-dom";
-import Admin from "./components/Admin";
+import Admin from "./components/Admin/Admin";
 import Backendlayout from "./components/Admin/Backendlayout";
 import Frontend from "./components/Users/Frontend";
 import Error from "./components/Error";
@@ -15,6 +15,20 @@ import Main_show from "./components/Users/Customer/Main_show";
 import LMain_show from "./components/Users/Landlord/LMain_show";
 import Cust_Landing from "./components/Users/Customer/Cust_Landing";
 import Landlord_Landing from "./components/Users/Landlord/Landlord_Landing";
+
+// let storetemp = localStorage.getItem("myData");
+// console.log(storetemp);
+// if (localStorage.getItem("myData") === "none") {
+//   // window.onbeforeunload = function () {
+//   //   return "Your work will be lost.";
+//   // };
+//   // window.location.hash = "/";
+//   // window.onhashchange = function () {
+//   //   window.location.href = "/";
+//   // };
+//   // window.location.href = "/";
+//   // history.go(-1);
+// }
 
 function App() {
   return (

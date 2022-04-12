@@ -24,6 +24,8 @@
       crossorigin
     ></script>
 
+    <link  rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"></link>
+
     <script
       src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"
       crossorigin
@@ -40,6 +42,43 @@
     </script>
 
     <script>
+      let t1 = gsap.timeline();
+let t2 = gsap.timeline();
+let t3 = gsap.timeline();
+
+t1.to(".cog1",
+{
+  transformOrigin:"50% 50%",
+  rotation:"+=360",
+  repeat:-1,
+  ease:Linear.easeNone,
+  duration:8
+});
+
+t2.to(".cog2",
+{
+  transformOrigin:"50% 50%",
+  rotation:"-=360",
+  repeat:-1,
+  ease:Linear.easeNone,
+  duration:8
+});
+
+t3.fromTo(".wrong-para",
+{
+  opacity:0
+},
+{
+  opacity:1,
+  duration:1,
+  stagger:{
+    repeat:-1,
+    yoyo:true
+  }
+});
+    </script>
+
+    <script>
       $(document).ready(function () {
         $("i").click(function () {
           $("ul").toggleClass("ul_show");
@@ -52,6 +91,46 @@
     </script>
 
     <!-- //state and city  -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function (event) {
+        const showNavbar = (toggleId, navId, bodyId, headerId) => {
+          const toggle = document.getElementById(toggleId),
+            nav = document.getElementById(navId),
+            bodypd = document.getElementById(bodyId),
+            headerpd = document.getElementById(headerId);
+
+          // Validate that all variables exist
+          if (toggle && nav && bodypd && headerpd) {
+            toggle.addEventListener("click", () => {
+              // show navbar
+              nav.classList.toggle("show");
+              // change icon
+              toggle.classList.toggle("bx-x");
+              // add padding to body
+              bodypd.classList.toggle("body-pd");
+              // add padding to header
+              headerpd.classList.toggle("body-pd");
+            });
+          }
+        };
+
+        showNavbar("header-toggle", "nav-bar", "body-pd", "header");
+
+        /*===== LINK ACTIVE =====*/
+        const linkColor = document.querySelectorAll(".nav_link");
+
+        function colorLink() {
+          if (linkColor) {
+            linkColor.forEach((l) => l.classList.remove("active"));
+            this.classList.add("active");
+          }
+        }
+        linkColor.forEach((l) => l.addEventListener("click", colorLink));
+
+        // Your code to run since DOM is loaded and ready
+      });
+    </script>
 
     <title>House Renting System</title>
   </head>

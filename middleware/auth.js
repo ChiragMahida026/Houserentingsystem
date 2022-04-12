@@ -12,6 +12,7 @@ module.exports = function (req, res, next) {
 
   //verify token
   try {
+    // const tokens = req.cookies.jwt;
     const decoded = jwt.verify(token, config.get("jwtSecret"));
     // @ts-ignore
     console.log(decoded.login_user.usertype);
@@ -21,6 +22,10 @@ module.exports = function (req, res, next) {
     // @ts-ignore
     req.usertype = decoded.login_user.usertype;
     console.log(req.usertype);
+
+    // @ts-ignore
+    req.token = decoded.login_user.token;
+    console.log(req.token);
     next();
   } catch (error) {
     res.status(401).json({ msg: "Token is not valid" });

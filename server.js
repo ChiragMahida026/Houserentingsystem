@@ -64,6 +64,8 @@ app.use("/routes/api/pincode", require("./routes/api/pincode"));
 app.use("/routes/api/email", require("./routes/api/email"));
 app.use("/routes/api/sendmail", require("./routes/api/sendmail"));
 
+app.use("/routes/api/logout", require("./routes/api/logout"));
+
 app.use(
   "/routes/api/landlord_registration",
   require("./routes/api/landlord_registration")
