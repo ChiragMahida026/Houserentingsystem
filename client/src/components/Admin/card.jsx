@@ -1,8 +1,18 @@
+import axios from "axios";
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import "../layout/css/Adminslide.css";
 
 function card(props) {
+  function set() {
+    localStorage.setItem("myData", "none");
+    localStorage.setItem("token", "none");
+    const res = axios.get("routes/api/logout");
+    if (res) {
+      console.log("done logout");
+      window.location.href = "/login";
+    }
+  }
   return (
     <>
       {" "}
@@ -47,10 +57,10 @@ function card(props) {
                 </Link>
               </div>
             </div>
-            <Link to="/logout" className="nav_link">
+            <div className="nav_link" onClick={set}>
               <i className="bx bx-log-out nav_icon"></i>
               <span className="nav_name">SignOut</span>
-            </Link>
+            </div>
           </nav>
         </div>
         <div

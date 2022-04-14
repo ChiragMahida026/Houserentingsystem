@@ -77,6 +77,7 @@ app.use(
   "/dashadmin/routes/api/viewallprofile",
   require("./routes/api/viewallprofile")
 );
+app.use("/dashadmin/routes/api/addhouse", require("./routes/api/addhouse"));
 
 const PORT = process.env.PORT || 5000;
 
