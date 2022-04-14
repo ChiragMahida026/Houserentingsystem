@@ -2,7 +2,7 @@ const NodeGeocoder = require("node-geocoder");
 const express = require("express");
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/pincode", async (req, res) => {
   let options = {
     provider: "openstreetmap",
   };
@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
   let city = "";
   let country = "";
   geoCoder
-    .geocode(req.body.code)
+    .geocode(req.body.address_pincode)
     .then((abc) => {
       abc.forEach(function (temp) {
         const tempsid = temp.formattedAddress.split(",");
@@ -29,4 +29,5 @@ router.post("/", async (req, res) => {
       console.log(err);
     });
 });
+
 module.exports = router;

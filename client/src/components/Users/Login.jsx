@@ -59,7 +59,9 @@ const Login = () => {
           window.location.href = "/dashadmin";
         }
         console.log(res);
+        console.log(res.data.token);
         localStorage.setItem("myData", res.data.user.usertype);
+        localStorage.setItem("token", res.data.token);
       } else {
         //put alert
       }

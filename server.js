@@ -71,6 +71,13 @@ app.use(
   require("./routes/api/landlord_registration")
 );
 app.use("/routes/api/auth", require("./routes/api/auth"));
+
+//Call Api in admin side
+app.use(
+  "/dashadmin/routes/api/viewallprofile",
+  require("./routes/api/viewallprofile")
+);
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`server started ${PORT}`));

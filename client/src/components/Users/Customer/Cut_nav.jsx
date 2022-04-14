@@ -4,13 +4,15 @@ import "../../layout/css/Imagecss.css";
 // @ts-ignore
 import logo from "../../layout/images/logo-home-png-7435.png";
 // import $ from "jquery";
-import { FaSignOutAlt } from "react-icons/fa";
+import { FaHome, FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { BiEdit } from "react-icons/bi";
 
 const Navbar = () => {
   function set() {
     localStorage.setItem("myData", "none");
+    localStorage.setItem("token", "none");
     const res = axios.get("routes/api/logout");
     if (res) {
       console.log("done logout");
@@ -45,6 +47,24 @@ const Navbar = () => {
             className="collapse navbar-collapse justify-content-between"
             id="navbarSupportedContent"
           >
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link className="nav-link" aria-current="page" to="/dashcust">
+                  <FaHome />
+                  &nbsp;Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  aria-current="page"
+                  to="/dashcust/editprofile"
+                >
+                  <BiEdit />
+                  &nbsp;Edit Profile
+                </Link>
+              </li>
+            </ul>
             <ul className="navbar-nav ms-auto">
               <button className="btn" onClick={set}>
                 <FaSignOutAlt />

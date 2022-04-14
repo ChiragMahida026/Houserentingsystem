@@ -6,7 +6,7 @@ function Backendlayout(props) {
     <div>
       Backendlayout
       <Cards />
-      <Outlet />
+      {/* <Outlet /> */}
     </div>
   );
 }

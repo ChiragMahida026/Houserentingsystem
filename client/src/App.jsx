@@ -15,6 +15,9 @@ import Main_show from "./components/Users/Customer/Main_show";
 import LMain_show from "./components/Users/Landlord/LMain_show";
 import Cust_Landing from "./components/Users/Customer/Cust_Landing";
 import Landlord_Landing from "./components/Users/Landlord/Landlord_Landing";
+import Cust_Editprofile from "./components/Users/Customer/Cust_Editprofile";
+import Admin_UserInformation from "./components/Admin/Admin_UserInformation";
+import Addhouse from "./components/Admin/Addhouse";
 
 // let storetemp = localStorage.getItem("myData");
 // console.log(storetemp);
@@ -44,15 +47,20 @@ function App() {
 
         <Route path="/dashadmin" element={<Backendlayout />}>
           <Route index element={<Admin />} />
+          <Route path="userinformation" element={<Admin_UserInformation />} />
+          <Route path="Addhouse" element={<Addhouse />} />
+          <Route path="allrequest" element={<Admin_UserInformation />} />
           <Route path="settings" element={<Error />} />
         </Route>
 
         <Route path="/dashcust" element={<Main_show />}>
           <Route index element={<Cust_Landing />} />
-          <Route path="settings" element={<Error />} />
+          <Route index element={<Cust_Editprofile />} />
+          <Route path="/dashcust/editprofile" element={<Cust_Editprofile />} />
+          {/* <Route path="settings" element={<Cust_Editprofile />} /> */}
         </Route>
 
-        <Route path="dashlandlord" element={<Main_show />}>
+        <Route path="dashlandlord" element={<LMain_show />}>
           <Route index element={<Landlord_Landing />} />
           <Route path="settings" element={<Error />} />
         </Route>
