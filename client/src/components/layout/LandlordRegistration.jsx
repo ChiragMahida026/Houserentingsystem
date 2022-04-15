@@ -193,10 +193,11 @@ const LandlordRegistration = () => {
             <input
               type="Date"
               className="form-input"
+              min="2001-01-01"
+              max="2018-12-31"
               name="dob"
               value={dob}
               onChange={(e) => onChange(e)}
-              max={1999}
               required
             />
           </div>
@@ -364,7 +365,7 @@ const LandlordRegistration = () => {
             className="btn btn-primary"
             value="Submit"
             id="boton1"
-            style={{ display: "none" }}
+            style={{ display: "none", margin: "auto" }}
           />
         </div>
       </form>

@@ -79,6 +79,11 @@ app.use(
 );
 app.use("/dashadmin/routes/api/addhouse", require("./routes/api/addhouse"));
 
+//call Api in customer side
+app.use(
+  "/dashcust/routes/api/viewprofile",
+  require("./routes/api/viewprofile")
+);
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`server started ${PORT}`));

@@ -192,12 +192,14 @@ const CustomerRegistration = () => {
           <div className="form-group ">
             <label className="label-title">Date Of Birth </label>
             <input
-              type="Date"
+              type="date"
+              min="2001-01-01"
+              max="2018-12-31"
               className="form-input"
               name="dob"
               value={dob}
               onChange={(e) => onChange(e)}
-              max={1999}
+              // maxLength={1999}
               required
             />
           </div>
@@ -215,7 +217,8 @@ const CustomerRegistration = () => {
                 <option value="" selected disabled hidden>
                   Select State
                 </option>
-                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Maharashtra">Maharashtra</option>
               </select>
             </div>
             <div className="form-group right">
@@ -230,7 +233,9 @@ const CustomerRegistration = () => {
                 <option value="" selected disabled hidden>
                   Select City
                 </option>
-                <option value="Adilabad">Adilabad</option>
+                <option value="Surat">Surat</option>
+                <option value="Bardoli">Bardoli</option>
+                <option value="Mumbai">mumbai</option>
               </select>
             </div>
           </div>
@@ -251,7 +256,6 @@ const CustomerRegistration = () => {
                 </option>
                 <option value="Aadhaar Card">Aadhaar Card</option>
                 <option value="PAN Card">PAN Card</option>
-                <option value="passport">passport</option>
                 <option value="Voter ID Card">Voter ID Card</option>
               </select>
             </div>
@@ -306,7 +310,7 @@ const CustomerRegistration = () => {
               value={password}
               onChange={(e) => onChange(e)}
               className="form-input"
-              pattern="^.{6,}$"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 3}$"
               placeholder="enter your password"
               required
             />
@@ -366,7 +370,7 @@ const CustomerRegistration = () => {
             className="btn btn-primary"
             value="Submit"
             id="boton1"
-            style={{ display: "none",margin:"auto" }}
+            style={{ display: "none", margin: "auto" }}
           />
         </div>
       </form>

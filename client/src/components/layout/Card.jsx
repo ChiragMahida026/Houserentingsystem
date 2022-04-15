@@ -1,5 +1,7 @@
+// @ts-nocheck
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import Swalfire from "sweetalert2";
 
 function Card() {
   const [user, setUser] = useState([]);
@@ -14,7 +16,13 @@ function Card() {
   useEffect(() => {
     fetchData();
   }, []);
-
+  function set2() {
+    Swalfire.fire({
+      title: "Somthing Wrong!",
+      icon: "error",
+      html: "Login First",
+    });
+  }
   return (
     <div className="clearfix">
       <div className="row">
@@ -26,13 +34,24 @@ function Card() {
                   <img src={data.Image1} className="card-img-top" alt="" />
                 </div>
                 <h5 className="card-title">
-                  {data.description + " " + data.price}
+                  {"House Description : " + data.description + " "}
                 </h5>
+                <h5>{"House Price : " + data.price + "₹"}</h5>
                 <p className="card-text">
-                  {data.house_type + ", " + data.total_roomes}
+                  {"House Type : " + data.house_type}
                   <br />
-                  <span className="phone">{data.total_roomes}</span>
                 </p>
+                <center>
+                  <input
+                    type="button"
+                    name="OTP"
+                    className="btn btn-primary"
+                    value="Show House"
+                    id="boton2"
+                    // style={{ display: "none" }}
+                    onClick={set2}
+                  />
+                </center>
               </div>
             </div>
           </div>
