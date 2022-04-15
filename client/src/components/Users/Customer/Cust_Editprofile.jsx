@@ -5,6 +5,7 @@ import img1 from "../../layout/images/real-estate-website-design-bg.jpg";
 // @ts-ignore
 import img2 from "../../layout/images/2f12cb22-293c-4a95-81b4-699a909f18c5-Buildingourownhouse.webp";
 import "../../layout/css/Regcss.css";
+import Swalfire from "sweetalert2";
 // import { response } from "express";
 
 const CustomerRegistration = () => {
