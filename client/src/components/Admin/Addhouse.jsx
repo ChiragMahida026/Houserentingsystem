@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import swal from "sweetalert";
 
 function Addhouse() {
   const [fromData, setFormData] = useState({
@@ -64,7 +65,14 @@ function Addhouse() {
       console.log(body);
       const res = await axios.post("routes/api/addhouse", body, config);
       if (res.status === 200) {
-        // window.location.href = "/login";
+        swal({
+          title: "SuccessFully Added House",
+          // text: "I will close in 2 seconds.",
+          timer: 1000,
+          icon: "success",
+          // @ts-ignore
+          button: false,
+        });
       } else {
         //put alert
       }
