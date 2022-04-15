@@ -17,6 +17,7 @@ import Cust_Landing from "./components/Users/Customer/Cust_Landing";
 import Landlord_Landing from "./components/Users/Landlord/Landlord_Landing";
 import Cust_Editprofile from "./components/Users/Customer/Cust_Editprofile";
 import Admin_UserInformation from "./components/Admin/Admin_UserInformation";
+import About from "./components/layout/About";
 import Addhouse from "./components/Admin/Addhouse";
 
 // let storetemp = localStorage.getItem("myData");
@@ -41,6 +42,7 @@ function App() {
         <Route path="/" element={<Frontend />}>
           <Route index element={<Landing />} />
           <Route path="login" element={<Login />} />
+          <Route path="about" element={<About />} />
           <Route path="customer_reg" element={<CustomerRegistration />} />
           <Route path="landlord_reg" element={<LandlordRegistration />} />
         </Route>

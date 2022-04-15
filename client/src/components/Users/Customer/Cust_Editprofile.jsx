@@ -9,16 +9,21 @@ import "../../layout/css/Regcss.css";
 
 const CustomerRegistration = () => {
   const [user, setUser] = useState([]);
-
-  const config = {
-    headers: {
-      "x-auth-token": localStorage.getItem("token"),
-    },
+  const fetchData = () => {
+    const config = {
+      headers: {
+        "x-auth-token": localStorage.getItem("token"),
+      },
+    };
+    axios.get("/dashcust/routes/api/viewprofile", config).then((res) => {
+      setUser(res.data.data);
+      console.log(res);
+      console.log(res.data.data);
+    });
   };
-  // const fetchData = () => {
-  const res = axios.get("routes/api/viewprofile", config);
-  console.log(res);
-  // };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>

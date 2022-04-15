@@ -1,5 +1,7 @@
+// @ts-nocheck
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Swalfire from "sweetalert2";
 
 function Cust_Landing() {
   const [user, setUser] = useState([]);
@@ -20,24 +22,43 @@ function Cust_Landing() {
     fetchData();
   }, []);
 
+  function set2() {
+    // Swalfire.fire({
+    //   title: "Somthing Wrong!",
+    //   icon: "error",
+    //   html: "Login First",
+    // });
+  }
+
   return (
-    <div className="clearfix">
+    <div className="clearfix" style={{ padding: "50px" }}>
       <div className="row">
         {user.map((data) => (
           <div className="col-md-4 animated fadeIn" key={data.roomie_id}>
-            <div className="card" style={{ width: "unset", margin: "11%" }}>
+            <div className="card" style={{ width: "unset" }}>
               <div className="card-body">
                 <div className="avatar">
                   <img src={data.Image1} className="card-img-top" alt="" />
                 </div>
                 <h5 className="card-title">
-                  {data.description + " " + data.price}
+                  {"House Description : " + data.description + " "}
                 </h5>
+                <h5>{"House Price : " + data.price + "₹"}</h5>
                 <p className="card-text">
-                  {data.house_type + ", " + data.total_roomes}
+                  {"House Type : " + data.house_type}
                   <br />
-                  <span className="phone">{data.total_roomes}</span>
                 </p>
+                <center>
+                  <input
+                    type="button"
+                    name="OTP"
+                    className="btn btn-primary"
+                    value="Show House"
+                    id="boton2"
+                    // style={{ display: "none" }}
+                    onClick={set2}
+                  />
+                </center>
               </div>
             </div>
           </div>
