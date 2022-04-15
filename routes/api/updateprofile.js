@@ -28,7 +28,7 @@ router.patch("/", auth, async (req, res) => {
     { _id: req.id },
     {
       $set: {
-        c_name: req.body.name ? req.body.name : profile1.name,
+        c_name: req.body.c_name ? req.body.c_name : profile1.c_name,
         email: req.body.email ? req.body.email : profile1.email,
         contact: req.body.contact ? req.body.contact : profile1.contact,
         dob: req.body.dob ? req.body.dob : profile1.dob,

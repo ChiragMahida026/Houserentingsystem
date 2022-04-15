@@ -9,22 +9,56 @@ import "../../layout/css/Regcss.css";
 
 const CustomerRegistration = () => {
   const [user, setUser] = useState([]);
+  const [address, setaddress] = useState("");
   const fetchData = () => {
     const config = {
       headers: {
         "x-auth-token": localStorage.getItem("token"),
       },
     };
-    axios.get("/dashcust/routes/api/viewprofile", config).then((res) => {
+    axios.get("routes/api/viewprofile", config).then((res) => {
       setUser(res.data.data);
       console.log(res);
-      console.log(res.data.data);
+      setaddress(res.data.data.address);
+      console.log(res.data.data.c_name);
+      // console.log(res.data.data);
     });
   };
   useEffect(() => {
     fetchData();
   }, []);
 
+  let save = async (e) => {
+    e.preventDefault();
+
+    const updatenames = {
+      address,
+    };
+
+    try {
+      console.log(updatenames);
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": localStorage.getItem("token"),
+        },
+      };
+      const body = JSON.stringify(updatenames);
+      console.log(body);
+      const res = await axios.patch(
+        "/dashcust/routes/api/updateprofile",
+        body,
+        config
+      );
+      if (res.status === 200) {
+        // window.location.href = "/login";
+      } else {
+        //put alert
+      }
+    } catch (err) {
+      console.error(err.response.data);
+    }
+  };
   return (
     <>
       <div className="child">
@@ -47,10 +81,10 @@ const CustomerRegistration = () => {
       </div>
 
       <form
-        action="../../../../routes/api/customer_registration"
+        action="../../../../../routes/api/updateprofile"
         method="post"
         className="signup-form"
-        // onSubmit={save}
+        onSubmit={save}
         style={{ backgroundColor: "White", width: "60%", marginTop: "-150px" }}
       >
         <div className="form-header">
@@ -67,87 +101,15 @@ const CustomerRegistration = () => {
             <label className="label-title">Name </label>
             <input
               type="text"
-              id="name"
+              id="address"
               className="form-input"
               placeholder="enter your Full Name"
+              value={address}
+              onChange={(e) => setaddress(e.target.value)}
               name="name"
               //   value={name}
               //   onChange={(e) => onChange(e)}
               // pattern="^[a-zA-Z]+ +[a-zA-Z]+$"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label className="label-title">Address</label>
-            <textarea
-              className="form-input"
-              placeholder="enter your Address"
-              rows={4}
-              cols={50}
-              name="address"
-              //   value={address}
-              //   onChange={(e) => onChange(e)}
-              minLength={5}
-              maxLength={250}
-              style={{ height: "auto", resize: "none" }}
-            ></textarea>
-          </div>
-          <div className="form-group ">
-            <label className="label-title">Date Of Birth </label>
-            <input
-              type="Date"
-              className="form-input"
-              name="dob"
-              //   value={dob}
-              //   onChange={(e) => onChange(e)}
-              max={1999}
-              required
-            />
-          </div>
-          &ensp;&emsp;
-          <div className="horizontal-group">
-            <div className="form-group left">
-              <label className="label-title">Select State</label>
-              <select
-                name="DDState"
-                className="form-input"
-                id="DDState"
-                // value={DDState}
-                // onChange={(e) => onChange(e)}
-              >
-                <option value="" selected disabled hidden>
-                  Select State
-                </option>
-                <option value="Andhra Pradesh">Andhra Pradesh</option>
-              </select>
-            </div>
-            <div className="form-group right">
-              <label className="label-title">Select City</label>
-              <select
-                name="DDCity"
-                className="form-input"
-                id="DDCity"
-                // value={DDCity}
-                // onChange={(e) => onChange(e)}
-              >
-                <option value="" selected disabled hidden>
-                  Select City
-                </option>
-                <option value="Adilabad">Adilabad</option>
-              </select>
-            </div>
-          </div>
-          <div className="form-group">
-            <label className="label-title">Contact No</label>
-            <input
-              type="text"
-              maxLength={10}
-              placeholder="enter your contact no"
-              className="form-input"
-              name="contact"
-              //   value={contact}
-              //   onChange={(e) => onChange(e)}
-              pattern="^[6789][0-9]{9}$"
               required
             />
           </div>
