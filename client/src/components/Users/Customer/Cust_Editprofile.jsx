@@ -20,6 +20,7 @@ const CustomerRegistration = () => {
       setUser(res.data.data);
       console.log(res);
       setaddress(res.data.data.address);
+      // setaddress(res.data.data.c_name);
       console.log(res.data.data.c_name);
       // console.log(res.data.data);
     });
@@ -98,7 +99,7 @@ const CustomerRegistration = () => {
           style={{ margin: "inherit", marginTop: "-10%" }}
         >
           <div className="form-group">
-            <label className="label-title">Name </label>
+            <label className="label-title">City </label>
             <input
               type="text"
               id="address"
