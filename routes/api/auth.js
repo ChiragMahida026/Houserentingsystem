@@ -87,6 +87,8 @@ router.post(
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
+          res.cookie("myData", user.usertype);
+          res.cookie("token", token);
           res.json({ token, user }); //to get id
         }
       );

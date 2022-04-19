@@ -5,8 +5,7 @@ import "../layout/css/Adminslide.css";
 
 function card(props) {
   function set() {
-    localStorage.setItem("myData", "none");
-    localStorage.setItem("token", "none");
+    localStorage.clear();
     const res = axios.get("routes/api/logout");
     if (res) {
       console.log("done logout");

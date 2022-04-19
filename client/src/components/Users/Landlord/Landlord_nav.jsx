@@ -6,10 +6,16 @@ import logo from "../../layout/images/logo-home-png-7435.png";
 // import $ from "jquery";
 import { FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Navbar = () => {
   function set() {
-    localStorage.setItem("myData", "none");
+    localStorage.clear();
+    const res = axios.get("routes/api/logout");
+    if (res) {
+      console.log("done logout");
+      window.location.href = "/login";
+    }
   }
   return (
     <>

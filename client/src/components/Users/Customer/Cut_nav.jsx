@@ -11,8 +11,7 @@ import { BiEdit } from "react-icons/bi";
 
 const Navbar = () => {
   function set() {
-    localStorage.setItem("myData", "none");
-    localStorage.setItem("token", "none");
+    localStorage.clear();
     const res = axios.get("routes/api/logout");
     if (res) {
       console.log("done logout");
