@@ -47,6 +47,10 @@ function card(props) {
                   <i className="bx bx-user nav_icon"></i>{" "}
                   <span className="nav_name">User Information</span>
                 </Link>
+                <Link to="houseinformation" className="nav_link">
+                  <i className="fa fa-home nav_icon"></i>{" "}
+                  <span className="nav_name">House Information</span>
+                </Link>
                 <Link to="/dashadmin" className="nav_link">
                   <i className="bx bx-message-square-detail nav_icon"></i>
                   <span className="nav_name">All Request</span>{" "}

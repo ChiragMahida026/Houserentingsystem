@@ -78,6 +78,7 @@ app.use(
   require("./routes/api/viewallprofile")
 );
 app.use("/dashadmin/routes/api/addhouse", require("./routes/api/addhouse"));
+app.use("/dashadmin/routes/api/viewhouse", require("./routes/api/viewhouse"));
 
 //call Api in customer side
 app.use(

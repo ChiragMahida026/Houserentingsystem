@@ -7,7 +7,7 @@ import $ from "jquery";
 //For API Requests
 import axios from "axios";
 
-function Admin_UserInformation() {
+function Admin_houseinfo() {
   const [user, setUser] = useState([]);
   const [query, setquery] = useState("");
 
@@ -18,7 +18,7 @@ function Admin_UserInformation() {
       },
     };
 
-    axios.get("/dashadmin/routes/api/viewallprofile/", config).then((res) => {
+    axios.get("/dashadmin/routes/api/viewhouse/all", config).then((res) => {
       setUser(res.data.data);
       console.log(res);
       console.log(res.data.data);
@@ -49,25 +49,25 @@ function Admin_UserInformation() {
         <table id="example" className="table table-hover table-bordered">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Conatct</th>
+              <th>House Description</th>
+              <th>House Price</th>
+              <th>House Type</th>
             </tr>
           </thead>
           <tbody>
             {user
               .filter(
                 (data) =>
-                  data.c_name.toLowerCase().includes(query) ||
-                  data.email.toLowerCase().includes(query) ||
-                  data.contact.toLowerCase().includes(query)
+                  data.description.toLowerCase().includes(query) ||
+                  data.house_type.toLowerCase().includes(query) ||
+                  data.address.toLowerCase().includes(query)
               )
               .map((data) => {
                 return (
-                  <tr>
-                    <td>{data.c_name}</td>
-                    <td>{data.email}</td>
-                    <td>{data.contact}</td>
+                  <tr key={data._id}>
+                    <td>{data.description}</td>
+                    <td>{data.price}</td>
+                    <td>{data.house_type}</td>
                   </tr>
                 );
               })}
@@ -77,4 +77,4 @@ function Admin_UserInformation() {
     </div>
   );
 }
-export default Admin_UserInformation;
+export default Admin_houseinfo;

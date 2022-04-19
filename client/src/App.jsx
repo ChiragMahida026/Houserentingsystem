@@ -17,6 +17,7 @@ import Cust_Landing from "./components/Users/Customer/Cust_Landing";
 import Landlord_Landing from "./components/Users/Landlord/Landlord_Landing";
 import Cust_Editprofile from "./components/Users/Customer/Cust_Editprofile";
 import Admin_UserInformation from "./components/Admin/Admin_UserInformation";
+import Admin_houseinfo from "./components/Admin/Admin_houseinfo";
 import About from "./components/layout/About";
 import Addhouse from "./components/Admin/Addhouse";
 
@@ -50,6 +51,7 @@ function App() {
         <Route path="/dashadmin" element={<Backendlayout />}>
           <Route index element={<Admin />} />
           <Route path="userinformation" element={<Admin_UserInformation />} />
+          <Route path="houseinformation" element={<Admin_houseinfo />} />
           <Route path="Addhouse" element={<Addhouse />} />
           <Route path="allrequest" element={<Admin_UserInformation />} />
           <Route path="settings" element={<Error />} />
