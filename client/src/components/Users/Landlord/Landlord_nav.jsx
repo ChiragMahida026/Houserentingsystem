@@ -4,14 +4,15 @@ import "../../layout/css/Imagecss.css";
 // @ts-ignore
 import logo from "../../layout/images/logo-home-png-7435.png";
 // import $ from "jquery";
-import { FaSignOutAlt } from "react-icons/fa";
+import { FaHome, FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { BiBuildingHouse, BiChevronUpSquare, BiEdit } from "react-icons/bi";
 
 const Navbar = () => {
   function set() {
     localStorage.clear();
-    const res = axios.get("routes/api/logout");
+    const res = axios.get("/dashlandlord/routes/api/logout");
     if (res) {
       console.log("done logout");
       window.location.href = "/login";
@@ -45,34 +46,53 @@ const Navbar = () => {
             className="collapse navbar-collapse justify-content-between"
             id="navbarSupportedContent"
           >
-            {/* <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="/">
+                <Link
+                  className="nav-link"
+                  aria-current="page"
+                  to="/dashlandlord"
+                >
                   <FaHome />
                   &nbsp;Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="/about">
-                  <GoBook />
-                  &nbsp;About
+                <Link
+                  className="nav-link"
+                  aria-current="page"
+                  to="/dashlandlord/addhouse"
+                >
+                  <BiChevronUpSquare />
+                  &nbsp;Add House
                 </Link>
               </li>
-
               <li className="nav-item">
-                <a className="nav-link" href="/#contact-section-container">
-                  <FaPhoneSquareAlt />
-                  &nbsp;Contact Us
-                </a>
+                <Link
+                  className="nav-link"
+                  aria-current="page"
+                  to="/dashlandlord/showhouse"
+                >
+                  <BiBuildingHouse />
+                  &nbsp;Show House
+                </Link>
               </li>
-            </ul> */}
+              <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  aria-current="page"
+                  to="/dashlandlord/editprofile"
+                >
+                  <BiEdit />
+                  &nbsp;Edit Profile
+                </Link>
+              </li>
+            </ul>
             <ul className="navbar-nav ms-auto">
-              <Link to="/">
-                <button className="btn" onClick={set}>
-                  <FaSignOutAlt />
-                  &ensp;Logout
-                </button>
-              </Link>
+              <button className="btn" onClick={set}>
+                <FaSignOutAlt />
+                &ensp;Logout
+              </button>
             </ul>
           </div>
         </div>

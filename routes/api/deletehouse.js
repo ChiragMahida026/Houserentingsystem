@@ -10,7 +10,7 @@ const House = require("../../models/house");
 
 router.get("/", auth, async (req, res) => {
   let house1 = {};
-  House.findOne({ roomie_id: req.query.roomie_id }, (err, house) => {
+  House.findOne({ userid: req.query.userid }, (err, house) => {
     if (err) {
       house = {};
     } else if (house == null) {
@@ -19,7 +19,7 @@ router.get("/", auth, async (req, res) => {
       house1 = house;
     }
   });
-  const del = await House.findOneAndDelete({ roomie_id: req.query.roomie_id });
+  const del = await House.findOneAndDelete({ userid: req.query.userid });
   if (del) {
     res.send(del);
   } else {

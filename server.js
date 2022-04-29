@@ -79,6 +79,7 @@ app.use(
 );
 app.use("/dashadmin/routes/api/addhouse", require("./routes/api/addhouse"));
 app.use("/dashadmin/routes/api/viewhouse", require("./routes/api/viewhouse"));
+app.use("/dashadmin/routes/api/logout", require("./routes/api/logout"));
 
 //call Api in customer side
 app.use(
@@ -88,6 +89,24 @@ app.use(
 app.use(
   "/dashcust/routes/api/updateprofile",
   require("./routes/api/updateprofile")
+);
+app.use("/dashcust/routes/api/logout", require("./routes/api/logout"));
+
+//call api landlord side
+app.use("/dashlandlord/routes/api/logout", require("./routes/api/logout"));
+app.use(
+  "/dashlandlord/routes/api/viewprofile",
+  require("./routes/api/viewprofile")
+);
+app.use("/dashlandlord/routes/api/addhouse", require("./routes/api/addhouse"));
+
+app.use(
+  "/dashlandlord/routes/api/viewhouse",
+  require("./routes/api/viewhouse")
+);
+app.use(
+  "/dashlandlord/routes/api/deletehouse",
+  require("./routes/api/deletehouse")
 );
 const PORT = process.env.PORT || 5000;
 

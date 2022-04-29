@@ -9,7 +9,7 @@ import Swalfire from "sweetalert2";
 import swal from "sweetalert";
 // import { response } from "express";
 
-const CustomerRegistration = () => {
+const Landlord_Editprofile = () => {
   const [user, setUser] = useState([]);
   const [address, setaddress] = useState("");
   const [c_name, setc_name] = useState("");
@@ -170,4 +170,4 @@ const CustomerRegistration = () => {
   );
 };
 
-export default CustomerRegistration;
+export default Landlord_Editprofile;
