@@ -27,11 +27,15 @@ function Card() {
   const [Id, setID] = useState("");
   const [Prc, setprc] = useState("");
   const [Img, setimage] = useState("");
+  const [Img2, setimage2] = useState("");
+  const [Img3, setimage3] = useState("");
 
-  function selectuser(id,pri,IMg) {
+  function selectuser(id,pri,IMg,IMg2,IMg3) {
     setID(id);
     setprc(pri);
     setimage(IMg);
+    setimage2(IMg2);
+    setimage3(IMg3);
 
    
   }
@@ -72,7 +76,13 @@ function Card() {
                       <i
                         className="fa fa-eye"
                         onClick={() => {
-                          selectuser(data._id, data.description,data.Image1);
+                          selectuser(
+                            data._id,
+                            data.description,
+                            data.Image1,
+                            data.Image2,
+                            data.Image3
+                          );
                         }}
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal"
@@ -97,7 +107,7 @@ function Card() {
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
                   {/* {Id} */}
-                  House Details
+                  House Images
                 </h5>
                 <button
                   type="button"
@@ -107,12 +117,87 @@ function Card() {
                 ></button>
               </div>
               <div className="modal-body">
-                {Prc}
-                <img
-                  width="100%"
-                  src={Img}
-                  alt=""
-                />
+                <div
+                  id="carousel"
+                  className="carousel slide carousel-fade"
+                  data-ride="carousel"
+                  data-interval="6000"
+                >
+                  <ol className="carousel-indicators">
+                    <li
+                      data-target="#carousel"
+                      data-slide-to="0"
+                      className="active"
+                    ></li>
+                    <li data-target="#carousel" data-slide-to="1"></li>
+                    <li data-target="#carousel" data-slide-to="2"></li>
+                  </ol>
+                  <div className="carousel-inner" role="listbox">
+                    <div className="carousel-item active">
+                      <picture>
+                        <img
+                          srcset={Img}
+                          alt="responsive image"
+                          className="d-block img-fluid"
+                        />
+                      </picture>
+
+                      {/* <div className="carousel-caption">
+                        <div>
+                            <h2>Digital Craftsmanship</h2>
+                            <p>We meticously build each site to get results</p>
+                            <span className="btn btn-sm btn-outline-secondary">Learn More</span>
+                        </div>
+                    </div> */}
+                    </div>
+
+                    <div className="carousel-item">
+                      <picture>
+                        <img
+                          srcset={Img2}
+                          alt="responsive image"
+                          className="d-block img-fluid"
+                        />
+                      </picture>
+                    </div>
+                    <div className="carousel-item">
+                      <picture>
+                        <img
+                          srcset={Img3}
+                          alt="responsive image"
+                          className="d-block img-fluid"
+                        />
+                      </picture>
+                    </div>
+                  </div>
+
+                  <a
+                    className="carousel-control-prev"
+                    href="#carousel"
+                    role="button"
+                    data-slide="prev"
+                  >
+                    <span
+                      className="carousel-control-prev-icon"
+                      aria-hidden="true"
+                      style={{ backgroundColor: "crimson" }}
+                    ></span>
+                    <span className="sr-only">Previous</span>
+                  </a>
+                  <a
+                    className="carousel-control-next"
+                    href="#carousel"
+                    role="button"
+                    data-slide="next"
+                  >
+                    <span
+                      className="carousel-control-next-icon"
+                      aria-hidden="true"
+                      style={{ backgroundColor: "crimson" }}
+                    ></span>
+                    <span className="sr-only">Next</span>
+                  </a>
+                </div>
               </div>
               <div className="modal-footer">
                 <button

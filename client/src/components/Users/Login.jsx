@@ -8,7 +8,7 @@ import logo from "../layout/images/34fe7f92-8594-40be-b689-a0c3ea8af779-Security
 import bg from "../layout/images/94-948582_light-colorful-background-hd.jpg";
 import Swalfire from "sweetalert2";
 import swal from "sweetalert";
-import $ from "../../../node_modules/jquery/dist/jquery";
+// import $ from "../../../node_modules/jquery/dist/jquery";
 import "animate.css";
 
 const Login = () => {

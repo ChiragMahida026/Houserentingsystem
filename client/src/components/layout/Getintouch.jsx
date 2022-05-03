@@ -15,11 +15,7 @@ const Getintouch = () => {
   let save = async (e) => {
     e.preventDefault();
 
-    const newUser = {
-      name,
-      email,
-      message,
-    };
+    
     try {
       const res = axios.get(
         "routes/api/sendmail?email=" +

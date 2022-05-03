@@ -1,8 +1,8 @@
-import React, { Component, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import "jquery/dist/jquery.min.js";
 
 //Datatable Modules
-import $ from "jquery";
+// import $ from "jquery";
 
 //For API Requests
 import axios from "axios";

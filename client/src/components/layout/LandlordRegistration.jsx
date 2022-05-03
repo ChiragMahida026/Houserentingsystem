@@ -6,6 +6,13 @@ import img1 from "../layout/images/Zoom_BG5_Cozy-Living-Room.jpg";
 import img2 from "../layout/images/8b5d6f32-0406-42c3-b4eb-7d79054bf948-HomeSweetHome.webp";
 
 const LandlordRegistration = () => {
+   const [address_pincode, setaddressp] = useState("");
+   const [address_city, setaddressc] = useState("");
+   const [address_state, setaddresst] = useState("");
+
+   console.log(address_city);
+   console.log(address_state);
+  
   const [fromData, setFormData] = useState({
     name: "",
     address: "",
@@ -81,6 +88,27 @@ const LandlordRegistration = () => {
       }
     }
   };
+  async function getadata(e) {
+    e.preventDefault();
+    try {
+      const res = await axios.post("/routes/api/pincode/pincode", {
+        address_pincode,
+      });
+
+      var xy = document.getElementById("DDState");
+      var zy = document.getElementById("DDCity");
+
+      // @ts-ignore
+      xy.value = res.data.state;
+      // @ts-ignore
+      zy.value = res.data.city;
+      setaddresst(res.data.state);
+      setaddressc(res.data.city);
+
+      console.log("abc");
+      console.log();
+    } catch (err) {}
+  }
   function Set() {
     var x = document.getElementById("myDIV");
     var y = document.getElementById("boton1");
@@ -201,38 +229,44 @@ const LandlordRegistration = () => {
               required
             />
           </div>
-          &ensp;&emsp;
+          <div className="form-group">
+            <label className="label-title">Pincode</label>
+            <input
+              type="number"
+              name="Pincode"
+              className="form-input"
+              id="Pincode"
+              placeholder="Pincode"
+              value={address_pincode}
+              onChange={(e) => setaddressp(e.target.value)}
+              required
+            />
+          </div>
+
           <div className="horizontal-group">
             <div className="form-group left">
               <label className="label-title">Select State</label>
-              <select
+              <input
+                type="text"
                 name="DDState"
                 className="form-input"
+                onChange={(e) => onChange(e)}
                 id="DDState"
                 value={DDState}
-                onChange={(e) => onChange(e)}
-              >
-                <option value="" selected disabled hidden>
-                  Select State
-                </option>
-                <option value="Andhra Pradesh">Andhra Pradesh</option>
-              </select>
+                onClick={getadata}
+              />
             </div>
             <div className="form-group right">
               <label className="label-title">Select City</label>
-              <select
+              <input
+                type="text"
                 name="DDCity"
                 className="form-input"
                 id="DDCity"
                 value={DDCity}
                 onChange={(e) => onChange(e)}
-              >
-                <option value="" selected disabled hidden>
-                  Select City
-                </option>
-                <option value="Adilabad">Adilabad</option>{" "}
-                <option value="Agra">Agra</option>{" "}
-              </select>
+                onClick={getadata}
+              />
             </div>
           </div>
           <div className="horizontal-group">

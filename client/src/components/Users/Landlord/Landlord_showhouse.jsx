@@ -1,9 +1,9 @@
 //localhost:5000/dashadmin/routes/api/viewhouse/getuserid?userid=62500fc1aa47c4737d1c6a58
-import React, { Component, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import "jquery/dist/jquery.min.js";
 
 //Datatable Modules
-import $ from "jquery";
+// import $ from "jquery";
 
 //For API Requests
 import axios from "axios";
