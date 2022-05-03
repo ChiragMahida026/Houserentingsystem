@@ -2,8 +2,12 @@ const express = require("express");
 const connectDB = require("./config/db");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const cors = require("cors");
 
 const app = express();
+
+const passwordReset = require("./routes/api/forgetpassword");
+const users = require("./routes/api/users");
 
 //connect Database
 connectDB();
@@ -12,6 +16,7 @@ connectDB();
 // @ts-ignore
 app.use(express.json({ extended: false }));
 
+app.use(cors());
 // app.use(express.urlencoded({ extended: true }));
 
 // creating 24 hours from milliseconds
@@ -27,6 +32,9 @@ app.use(
 );
 
 app.use(cookieParser());
+
+app.use("/routes/api/users", users);
+app.use("/routes/api/password-reset", passwordReset);
 
 //Define Routes
 app.use(
@@ -63,6 +71,7 @@ app.use("/routes/api/pincode", require("./routes/api/pincode"));
 
 app.use("/routes/api/email", require("./routes/api/email"));
 app.use("/routes/api/sendmail", require("./routes/api/sendmail"));
+app.use("/routes/api/forgetpass", require("./routes/api/forgetpassword"));
 
 app.use("/routes/api/logout", require("./routes/api/logout"));
 

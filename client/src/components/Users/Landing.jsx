@@ -3,7 +3,8 @@ import React from "react";
 import img1 from "../layout/images/Zoom_BG9_Stylish-Living-Room.jpg";
 import Card from "../layout/Card";
 import Getintouch from "../layout/Getintouch";
-import "../layout/css/cardcss.css";
+// import "../layout/css/cardcss.css";
+import "../layout/css/cards.css";
 
 const Landing = () => {
   return (

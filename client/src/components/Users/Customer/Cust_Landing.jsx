@@ -32,58 +32,56 @@ function Cust_Landing() {
   }
 
   return (
-    <div className="clearfix" style={{ padding: "50px" }}>
-      <div className="md-form mt-0">
-        <input
-          className="form-control"
-          type="text"
-          placeholder="Search"
-          style={{ marginBottom: "2%" }}
-          onChange={(e) => setquery(e.target.value)}
-        />
-      </div>
-      <div className="row">
-        {user
-          .filter(
-            (data) =>
-              data.description.toLowerCase().includes(query) ||
-              data.house_type.toLowerCase().includes(query) ||
-              data.address.toLowerCase().includes(query)
-          )
-          .map((data) => (
-            <div className="col-md-4 animated fadeIn" key={data._id}>
-              <div className="card" style={{ width: "unset" }}>
-                <div className="card-body">
-                  <div className="avatar">
-                    <img src={data.Image1} className="card-img-top" alt="" />
+    <div id="cards_landscape_wrap-2">
+      <div class="container">
+        <div className="md-form mt-0">
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Search"
+            style={{ marginBottom: "2%" }}
+            onChange={(e) => setquery(e.target.value)}
+          />
+        </div>
+        <div class="row">
+          {user
+            .filter(
+              (data) =>
+                data.description.toLowerCase().includes(query) ||
+                data.house_type.toLowerCase().includes(query) ||
+                data.address.toLowerCase().includes(query)
+            )
+            .map((data) => (
+              <div
+                class="col-xs-12 col-sm-6 col-md-3 col-lg-3"
+                key={data.roomie_id}
+              >
+                <div class="card-flyer">
+                  <div class="text-box">
+                    <div class="image-box">
+                      <img src={data.Image1} alt="" />
+                    </div>
+                    <div class="text-container">
+                      <h6>{"₹" + data.price}</h6>
+                      <p>{data.description}</p>
+                      <br />
+                      <input
+                        type="button"
+                        value="Rent House"
+                        className="btn btn-dark"
+                        id="boton2"
+                        // style={{ display: "none" }}
+                        onClick={set2}
+                      />
+                      <br />
+                      <br />
+                      <i className="fa fa-eye" />
+                    </div>
                   </div>
-                  <h5 className="card-title">
-                    {"House Description : " + data.description + " "}
-                  </h5>
-                  <h5>{"House Price : " + data.price + "₹"}</h5>
-                  <p className="card-text">
-                    {"House Type : " + data.house_type}
-                    <br />
-                  </p>
-                  <p className="card-text">
-                    {"Address : " + data.address}
-                    <br />
-                  </p>
-                  <center>
-                    <input
-                      type="button"
-                      name="OTP"
-                      className="btn btn-primary"
-                      value="Show House"
-                      id="boton2"
-                      // style={{ display: "none" }}
-                      onClick={set2}
-                    />
-                  </center>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+        </div>
       </div>
     </div>
   );

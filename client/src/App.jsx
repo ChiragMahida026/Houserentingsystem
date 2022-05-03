@@ -23,6 +23,8 @@ import Addhouse from "./components/Admin/Addhouse";
 import Landlord_Editprofile from "./components/Users/Landlord/Landlord_Editprofile";
 import Landlord_Addhouse from "./components/Users/Landlord/Landlord_Addhouse";
 import Landlord_showhouse from "./components/Users/Landlord/Landlord_showhouse";
+import ForgetPassword from "./components/layout/ForgetPassword";
+import ChangePassword from "./components/layout/ChangePassword";
 
 // let storetemp = localStorage.getItem("myData");
 // console.log(storetemp);
@@ -46,6 +48,8 @@ function App() {
         <Route path="/" element={<Frontend />}>
           <Route index element={<Landing />} />
           <Route path="login" element={<Login />} />
+          <Route path="forgetpass" element={<ForgetPassword />} />
+          <Route path="changepassword" element={<ChangePassword />} />
           <Route path="about" element={<About />} />
           <Route path="customer_reg" element={<CustomerRegistration />} />
           <Route path="landlord_reg" element={<LandlordRegistration />} />
