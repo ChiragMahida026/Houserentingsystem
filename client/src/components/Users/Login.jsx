@@ -62,6 +62,7 @@ const Login = () => {
         console.log(res.data.token);
         localStorage.setItem("myData", res.data.user.usertype);
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("Puserids", res.data.user._id);
       } else {
         //put alert
       }

@@ -21,17 +21,22 @@ const Landlord_Editprofile = () => {
         "x-auth-token": localStorage.getItem("token"),
       },
     };
-    axios.get("routes/api/viewprofile", config).then((res) => {
-      setUser(res.data.data);
-      console.log(res);
-      setaddress(res.data.data.address);
-      setc_name(res.data.data.c_name);
-      setcontact(res.data.data.contact);
+    axios
+      .get(
+        "routes/api/viewprofile?_id=" + localStorage.getItem("Puserids"),
+        config
+      )
+      .then((res) => {
+        setUser(res.data.data);
+        console.log(res);
+        setaddress(res.data.data.address);
+        setc_name(res.data.data.c_name);
+        setcontact(res.data.data.contact);
 
-      // setaddress(res.data.data.c_name);
-      console.log(res.data.data.c_name);
-      // console.log(res.data.data);
-    });
+        // setaddress(res.data.data.c_name);
+        console.log(res.data.data.c_name);
+        // console.log(res.data.data);
+      });
   };
   useEffect(() => {
     fetchData();

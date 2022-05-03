@@ -22,11 +22,11 @@ router.post(
   //Using async
   async (req, res) => {
     const errors = validationResult(req);
-    console.log(req.body);
+    console.log("dhskjdhkajdhakjdh"+req.body);
 
     var house1;
 
-    House.findOne({ roomie_id: req.body.house_id }, (err, house) => {
+    House.findOne({ roomie_id: req.body.roomie_id }, (err, house) => {
       if (err) {
         return res.json({ err: err });
       } else if (house == null) {
@@ -35,16 +35,17 @@ router.post(
         house1 = house;
       }
     });
-    console.log(house1);
+    console.log("House"+house1);
 
-    let request_h = new request_house({
+    const request_h = new request_house({
+      
       // @ts-ignore
       customer_id: req.id,
       house_id: req.body.house_id,
       Landlord_id: req.body.Landlord_id,
       response: 0,
     });
-    console.log(request_h);
+    console.log("Hellos"+request_h);
     try {
       request_h.save((err, reqs) => {
         if (err) {

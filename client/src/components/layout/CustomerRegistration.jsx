@@ -5,6 +5,7 @@ import img1 from "../layout/images/real-estate-website-design-bg.jpg";
 // @ts-ignore
 import img2 from "../layout/images/2f12cb22-293c-4a95-81b4-699a909f18c5-Buildingourownhouse.webp";
 import "../layout/css/Regcss.css";
+import Swalfire from "sweetalert2";
 
 const CustomerRegistration = () => {
   const [address_pincode, setaddressp] = useState("");
@@ -78,10 +79,16 @@ const CustomerRegistration = () => {
         if (res.status === 200) {
           window.location.href = "/login";
         } else {
+
           //put alert
         }
       } catch (err) {
         console.error(err.response.data);
+        Swalfire.fire({
+          title: "Somthing Wrong!",
+          icon: "error",
+          html: ""+err.response.data+"",
+        });
       }
     }
   };

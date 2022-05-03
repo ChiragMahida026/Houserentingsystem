@@ -4,6 +4,7 @@ import axios from "axios";
 import img1 from "../layout/images/Zoom_BG5_Cozy-Living-Room.jpg";
 // @ts-ignore
 import img2 from "../layout/images/8b5d6f32-0406-42c3-b4eb-7d79054bf948-HomeSweetHome.webp";
+import Swalfire from "sweetalert2";
 
 const LandlordRegistration = () => {
    const [address_pincode, setaddressp] = useState("");
@@ -85,6 +86,11 @@ const LandlordRegistration = () => {
         }
       } catch (err) {
         console.error(err.response.data);
+         Swalfire.fire({
+           title: "Somthing Wrong!",
+           icon: "error",
+           html: "" + err.response.data + "",
+         });
       }
     }
   };

@@ -8,9 +8,9 @@ const jwt = require("jsonwebtoken");
 
 const Profile = require("../../models/cust_reg");
 
-router.get("/", auth, async (req, res) => {
+router.get("/", auth,async (req, res) => {
   // @ts-ignore
-  Profile.findOne({ _id: req.id }, (err, profile) => {
+  Profile.findOne({ _id: req.query._id }, (err, profile) => {
     if (err) {
       return res.json({ err: err });
     } else if (profile == null) {

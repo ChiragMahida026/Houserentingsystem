@@ -21,11 +21,16 @@ function Admin_houseinfo() {
         "x-auth-token": localStorage.getItem("token"),
       },
     };
-    axios.get("routes/api/viewprofile", config).then((res) => {
-      console.log(res);
-      console.log(res.data.data._id);
-      localStorage.setItem("Landlord_id", res.data.data._id);
-    });
+    axios
+      .get(
+        "routes/api/viewprofile?_id=" + localStorage.getItem("Puserids"),
+        config
+      )
+      .then((res) => {
+        console.log(res);
+        console.log(res.data.data._id);
+        localStorage.setItem("Landlord_id", res.data.data._id);
+      });
 
     axios
       .get("routes/api/viewhouse/getuserid?userid=" + localids, config)

@@ -6,12 +6,12 @@ const RequestSchema = new mongoose.Schema({
     required: true,
   },
   house_id: {
-    type: Number,
+    type: String,
     required: true,
   },
 
   Landlord_id: {
-    type: Number,
+    type: String,
     required: true,
   },
   response: {
