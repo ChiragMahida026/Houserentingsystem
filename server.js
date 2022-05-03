@@ -7,7 +7,7 @@ const cors = require("cors");
 const app = express();
 
 const passwordReset = require("./routes/api/forgetpassword");
-const users = require("./routes/api/users");
+
 
 //connect Database
 connectDB();
@@ -33,7 +33,7 @@ app.use(
 
 app.use(cookieParser());
 
-app.use("/routes/api/users", users);
+
 app.use("/routes/api/password-reset", passwordReset);
 
 //Define Routes
