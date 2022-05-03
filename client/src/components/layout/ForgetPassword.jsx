@@ -87,7 +87,7 @@ const ForgetPassword = () => {
             <input
               type="email"
               name="email"
-              pattern="^.*[0-9]+.*@.*\..*$"
+              // pattern="^.*[0-9]+.*@.*\..*$"
               onChange={(e) => onChange(e)}
               required
             />
