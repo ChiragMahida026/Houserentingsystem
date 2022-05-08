@@ -30,7 +30,7 @@ const ChangePassword = () => {
       "http://localhost:5000/routes/api/password-reset/" + id + "/" + name,
       newuser
     );
-    // console.log(res.data(password));
+    // console.log(res.data(passworBBd));
     console.warn(res);
       
     const newUser = {

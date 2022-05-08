@@ -7,7 +7,12 @@ import logo from "../../layout/images/logo-home-png-7435.png";
 import { FaHome, FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { BiBuildingHouse, BiChevronUpSquare, BiEdit } from "react-icons/bi";
+import {
+  BiBuildingHouse,
+  BiChevronUpSquare,
+  BiEdit,
+  BiShow,
+} from "react-icons/bi";
 
 const Navbar = () => {
   function set() {
@@ -75,6 +80,16 @@ const Navbar = () => {
                 >
                   <BiBuildingHouse />
                   &nbsp;Show House
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  aria-current="page"
+                  to="showrequest"
+                >
+                  <BiShow />
+                  &nbsp;Show Request
                 </Link>
               </li>
               <li className="nav-item">

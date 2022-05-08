@@ -49,6 +49,7 @@ const CustomerSchema = new mongoose.Schema({
     required: true,
   },
   Identification_proof: {
+    // data:,
     type: String,
     required: true,
   },

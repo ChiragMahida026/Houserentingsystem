@@ -28,7 +28,7 @@ router.post(
 
     House.findOne({ roomie_id: req.body.roomie_id }, (err, house) => {
       if (err) {
-        return res.json({ err: err });
+        return res.json({ err: "errorkejfwklfjwlf" });
       } else if (house == null) {
         return res.json({ err: "no house avalible" });
       } else {
@@ -47,20 +47,50 @@ router.post(
     });
     console.log("Hellos"+request_h);
     try {
-      request_h.save((err, reqs) => {
-        if (err) {
-          res.status(500).send(err);
-        } else {
-          res.status(200).send({ message: "request added" });
-        }
-      });
+      request_h.save();
 
-      // res.send("Customer Registration route");//to print value
     } catch (err) {
-      console.error(err.message);
+      console.error("error");
       res.status(500).send("Server error");
     }
   }
 );
+
+router.get("/getuserid",auth, async (req, res) => {
+  request_house.find({ customer_id: req.query.customer_id }, (err, house) => {
+    if (err) {
+      return res.json({ err: err });
+    } else if (house == null) {
+      return res.json({ err: "no house avalible" });
+    } else {
+      return res.json({ data: house });
+    }
+  });
+});
+
+router.get("/landlorduserid", auth, async (req, res) => {
+  request_house.find({ Landlord_id: req.query.Landlord_id }, (err, house) => {
+    if (err) {
+      return res.json({ err: err });
+    } else if (house == null) {
+      return res.json({ err: "no house avalible" });
+    } else {
+      return res.json({ data: house });
+    }
+  });
+});
+
+router.get("/deleteuserid",auth, async (req, res) => {
+  // request_house.findOne({ _id: req.query._id }, (house) => {
+  //         return res.json({ data: house });
+    
+  // });
+  const del = await request_house.findOneAndDelete({ _id: req.query._id });
+  if (del) {
+    res.send(del);
+  } else {
+    // res.status(404).send("notfound");
+  }
+});
 
 module.exports = router;

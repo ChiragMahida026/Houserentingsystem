@@ -23,22 +23,10 @@ import Addhouse from "./components/Admin/Addhouse";
 import Landlord_Editprofile from "./components/Users/Landlord/Landlord_Editprofile";
 import Landlord_Addhouse from "./components/Users/Landlord/Landlord_Addhouse";
 import Landlord_showhouse from "./components/Users/Landlord/Landlord_showhouse";
+import Landlord_Showrequest from "./components/Users/Landlord/Landlord_Showrequest";
 import ForgetPassword from "./components/layout/ForgetPassword";
 import ChangePassword from "./components/layout/ChangePassword";
-
-// let storetemp = localStorage.getItem("myData");
-// console.log(storetemp);
-// if (localStorage.getItem("myData") === "none") {
-//   // window.onbeforeunload = function () {
-//   //   return "Your work will be lost.";
-//   // };
-//   // window.location.hash = "/";
-//   // window.onhashchange = function () {
-//   //   window.location.href = "/";
-//   // };
-//   // window.location.href = "/";
-//   // history.go(-1);
-// }
+import Cust_Showrequest from "./components/Users/Customer/Cust_Showrequest";
 
 function App() {
   return (
@@ -67,6 +55,7 @@ function App() {
         <Route path="/dashcust" element={<Main_show />}>
           <Route index element={<Cust_Landing />} />
           <Route path="/dashcust/editprofile" element={<Cust_Editprofile />} />
+          <Route path="showrequest" element={<Cust_Showrequest />} />
           {/* <Route path="settings" element={<Cust_Editprofile />} /> */}
         </Route>
 
@@ -80,6 +69,7 @@ function App() {
             path="/dashlandlord/addhouse"
             element={<Landlord_Addhouse />}
           />
+          <Route path="showrequest" element={<Landlord_Showrequest />} />
           <Route
             path="/dashlandlord/showhouse"
             element={<Landlord_showhouse />}

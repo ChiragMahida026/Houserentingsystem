@@ -7,7 +7,7 @@ import logo from "../../layout/images/logo-home-png-7435.png";
 import { FaHome, FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { BiEdit } from "react-icons/bi";
+import { BiEdit, BiMessageAlt } from "react-icons/bi";
 
 const Navbar = () => {
   function set() {
@@ -53,6 +53,17 @@ const Navbar = () => {
                   &nbsp;Home
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link
+                  className="nav-link"
+                  aria-current="page"
+                  to="showrequest"
+                >
+                  <BiMessageAlt />
+                  &nbsp;Show Request
+                </Link>
+              </li>
+              {/* Cust_Showrequest */}
               <li className="nav-item">
                 <Link
                   className="nav-link"
