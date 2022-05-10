@@ -6,13 +6,13 @@ router.get("/", async (req, res) => {
   var transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "rentalhousecd@gmail.com",
-      pass: "rentalhousecd95",
+      user: process.env.username,
+      pass: process.env.password,
     },
   });
 
   const mailOptions = {
-    from: "rentalhousecd@gmail.com", // sender address
+    from: process.env.username, // sender address
     to: req.query.email, // list of receivers
     subject: "Copy of Roomie Get in touch", // Subject line
     html:
